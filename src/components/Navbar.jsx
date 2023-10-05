@@ -1,10 +1,11 @@
 import React from "react";
+import Button from "./modal/Button";
 import { PiMoonDuotone, PiSunBold } from "react-icons/pi";
 
 function Navbar({ title }) {
-    const [theme, setTheme] = React.useState("cmyk");
+    const [theme, setTheme] = React.useState("dark");
     const toggleTheme = () => {
-        setTheme(theme === "dark" ? "cmyk" : "dark");
+        setTheme(theme === "cmyk" ? "dark" : "cmyk");
     };
 
     React.useEffect(() => {
@@ -19,6 +20,10 @@ function Navbar({ title }) {
                             <a className="btn btn-sm btn-ghost normal-case text-base font-bold tracking-wide">
                                 {title}
                             </a>
+                        </div>
+
+                        <div className="flex px-5 justify-center items-center">
+                            <Button />
                         </div>
 
                         <div className="flex-none mr-2 sm:mr-0">

@@ -24,9 +24,9 @@ function Card({ pathURL }) {
                                 />
                             </figure>
                             <div className="card-body items-center text-center">
-                                <p className="tracking-wide text-sm font-medium">{`19.11.${
-                                    3119 + index
-                                }`}</p>
+                                <p className="tracking-wide text-sm font-medium">
+                                    {url.split("/").pop().split(".")[0]}
+                                </p>
                             </div>
                         </div>
                     );
