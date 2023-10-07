@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./modal/Button";
 import { PiMoonDuotone, PiSunBold } from "react-icons/pi";
 
 function Navbar({ title }) {
-    const [theme, setTheme] = React.useState("dark");
-    const toggleTheme = () => {
-        setTheme(theme === "cmyk" ? "dark" : "cmyk");
+    const [theme, setTheme] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "cmyk"
+    );
+    const [checked, setChecked] = useState(theme === "cmyk" ? false : true);
+
+    const toggleTheme = (e) => {
+        if (e.target.checked) {
+            setTheme("dark");
+        } else {
+            setTheme("cmyk");
+        }
     };
 
-    React.useEffect(() => {
-        document.querySelector("html").setAttribute("data-theme", theme);
+    const refresh = () => {
+        localStorage.removeItem("dataClassmates"); // Remove data from localStorage
+        localStorage.removeItem("dataGraduated"); // Remove data from localStorage
+
+        window.location.reload(); // And reload the page
+    };
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const localStorageTheme = localStorage.getItem("theme");
+        document
+            .querySelector("html")
+            .setAttribute("data-theme", localStorageTheme);
     }, [theme]);
     return (
         <div>
@@ -17,9 +36,12 @@ function Navbar({ title }) {
                 <div className="container mx-auto w-full md:w-[45rem] flex justify-center">
                     <div className="menu menu-horizontal bg-base-100 w-full rounded-box sm:rounded-none">
                         <div className="flex-1">
-                            <a className="btn btn-sm btn-ghost normal-case text-base font-bold tracking-wide">
+                            <button
+                                className="btn btn-sm btn-ghost normal-case text-sm font-semibold tracking-wide"
+                                onClick={refresh}
+                            >
                                 {title}
-                            </a>
+                            </button>
                         </div>
 
                         <div className="flex px-5 justify-center items-center">
@@ -33,17 +55,21 @@ function Navbar({ title }) {
                                     <input
                                         type="checkbox"
                                         onClick={toggleTheme}
+                                        checked={checked}
+                                        onChange={(e) =>
+                                            setChecked(e.target.checked)
+                                        }
                                     />
 
                                     {/* sun icon */}
                                     <PiSunBold
-                                        size={25}
+                                        size={23.5}
                                         className="swap-off fill-current"
                                     />
 
                                     {/* moon icon */}
                                     <PiMoonDuotone
-                                        size={25}
+                                        size={23.5}
                                         className="swap-on fill-current"
                                     />
                                 </label>
