@@ -1,10 +1,12 @@
 const getUrl = (batchYear, classOf, majorCode, nim) => {
     return {
-        classmates: `https://fotomhs.amikom.ac.id/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
-        graduated: `https://amikom.ac.id/public/foto_wisuda/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
+        classmates: `${
+            import.meta.env.VITE_BASE_URL1
+        }/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
 
-        // classmates: `https://fotomhs.amikom.ac.id/2019/19_11_${nim}.jpg`,
-        // graduated: `https://amikom.ac.id/public/foto_wisuda/2019/19_11_${nim}.jpg`,
+        graduated: `${
+            import.meta.env.VITE_BASE_URL2
+        }/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
     };
 };
 
