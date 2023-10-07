@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-h1,
-p {
-    font-family: "Montserrat", sans-serif;
-    font-family: "Poppins", sans-serif;
+/* Remove to use default font */
+p,
+label,
+button {
+    font-family: "Noto Sans Georgian", sans-serif;
+    font-weight: 400;
 }
