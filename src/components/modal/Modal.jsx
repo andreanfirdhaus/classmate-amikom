@@ -8,9 +8,35 @@ function Modal({ updatePathURL }) {
     const [startNIM, setStartNIM] = useState("");
     const [endNIM, setEndNIM] = useState("");
 
+    const [error, setError] = useState("");
+
+    const closeModal = () => {
+        // Reset form when close
+        setYearCode("");
+        setClassOfCode("");
+        setMajorCode("");
+        setStartNIM("");
+        setEndNIM("");
+        setError("");
+
+        const modal = document.getElementById("my_modal_3");
+        if (modal) {
+            setError(""); // Reset error messages
+            modal.close(); // Close modal
+        }
+    };
+
     const handleSubmit = (e) => {
-        // e.preventDefault();
-        updatePathURL(yearCode, classOfCode, majorCode, startNIM, endNIM);
+        e.preventDefault();
+        if (yearCode && classOfCode && majorCode && startNIM && endNIM) {
+            // Only if all inputs are filled, call the updatePathURL function
+            updatePathURL(yearCode, classOfCode, majorCode, startNIM, endNIM);
+            setError(""); // Reset error messages
+
+            closeModal(); // Close modal after submit
+        } else {
+            setError("Form e isi su"); // Error messages
+        }
     };
 
     return (
@@ -19,7 +45,10 @@ function Modal({ updatePathURL }) {
                 <div className="modal-box">
                     <form method="dialog">
                         {/* if there is a button in form, it will close the modal */}
-                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                        <button
+                            className="btn btn-sm btn-circle btn-ghost absolute right-3 top-3"
+                            onClick={closeModal}
+                        >
                             <IoClose size={25} />
                         </button>
                         <div className="grid grid-cols-4 grid-rows-4 gap-5">
@@ -34,7 +63,7 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="20xx"
-                                        className="input input-bordered input-sm w-full max-w-xs"
+                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
                                         value={yearCode}
                                         onChange={(e) =>
                                             setYearCode(e.target.value)
@@ -42,7 +71,6 @@ function Modal({ updatePathURL }) {
                                     />
                                 </div>
                             </div>
-
                             <div className="col-span-2 row-start-2">
                                 {/* form input 2 */}
                                 <div className="form-control w-full max-w-xs">
@@ -54,8 +82,7 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="xx"
-                                        className="input input-bordered input-sm w-full max-w-xs"
-                                        required
+                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
                                         value={classOfCode}
                                         onChange={(e) =>
                                             setClassOfCode(e.target.value)
@@ -74,7 +101,7 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="xx"
-                                        className="input input-bordered input-sm w-full max-w-xs"
+                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
                                         value={majorCode}
                                         onChange={(e) =>
                                             setMajorCode(e.target.value)
@@ -93,7 +120,7 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="xxxx"
-                                        className="input input-bordered input-sm w-full max-w-xs"
+                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
                                         value={startNIM}
                                         onChange={(e) =>
                                             setStartNIM(e.target.value)
@@ -105,15 +132,14 @@ function Modal({ updatePathURL }) {
                                 {/* form input 5 */}
                                 <div className="form-control w-full max-w-xs">
                                     <label className="label">
-                                        <span className="label-text">
+                                        <span className="label-text font-normal">
                                             End NIM
                                         </span>
                                     </label>
                                     <input
                                         type="text"
                                         placeholder="xxxx"
-                                        className="input input-bordered input-sm w-full max-w-xs"
-                                        requireds
+                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
                                         value={endNIM}
                                         onChange={(e) =>
                                             setEndNIM(e.target.value)
@@ -122,9 +148,14 @@ function Modal({ updatePathURL }) {
                                 </div>
                             </div>
                             <div className="col-span-4 row-start-4">
+                                {error && (
+                                    <div className="tracking-wide text-red-500 label-text font-medium text-center py-2">
+                                        {error}
+                                    </div>
+                                )}
                                 {/* button */}
                                 <button
-                                    className="btn btn-sm btn-block btn-neutral"
+                                    className="btn btn-sm btn-block btn-neutral transition"
                                     type="submit"
                                     onClick={handleSubmit}
                                 >

@@ -16,19 +16,20 @@ function Classmates() {
 
     useEffect(() => {
         const fetchData = async (startNIM, endNIM) => {
-            if (classOf) {
-                const newUrl = [];
-                for (let i = startNIM; i <= endNIM; i++) {
-                    const url = getUrl(year, classOf, major, i).classmates;
-                    newUrl.push(url);
-                }
-                setData(newUrl);
+            const newUrl = [];
+            for (let i = startNIM; i <= endNIM; i++) {
+                const url = getUrl(year, classOf, major, i).classmates;
+                newUrl.push(url);
             }
+            setData(newUrl); // Set newUrl (the updated URL of the modal form) into setData
+
+            // Save newUrl (Updated URL) to localStorage
+            localStorage.setItem("dataClassmates", JSON.stringify(newUrl));
         };
         if (modalClicked) {
             fetchData(startNIM, endNIM);
         }
-    }, [classOf, startNIM, endNIM, modalClicked]);
+    }, [startNIM, endNIM, modalClicked]);
 
     const handleModalSubmit = (
         yearCode,
@@ -47,22 +48,9 @@ function Classmates() {
 
     return (
         <>
-            <Navbar title="Informatika-09" />
+            <Navbar title="kla·smayt" />
             <Modal updatePathURL={handleModalSubmit} />
-
-            {modalClicked ? (
-                <Card pathURL={data} />
-            ) : (
-                <div className="flex items-center h-[40rem] sm:h-[48rem]">
-                    <div className="hero h-96 bg-base-200">
-                        <div className="hero-content text-center">
-                            <div className="max-w-md">
-                                <p className="p-6">Your classmate's photo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <Card pathURL={data} desc="Your classmates photo" />
         </>
     );
 }
