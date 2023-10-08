@@ -23,7 +23,7 @@ function Graduated() {
             }
             setData(newUrl);
 
-            localStorage.setItem("dataGraduated", JSON.stringify(newUrl));
+            sessionStorage.setItem("dataGraduated", JSON.stringify(newUrl));
         };
         if (modalClicked) {
             fetchData(startNIM, endNIM);
@@ -47,7 +47,7 @@ function Graduated() {
 
     return (
         <>
-            <Navbar title="kla·smayt" />
+            <Navbar title="/ˈklæs.meɪts/" />
             <Modal updatePathURL={handleModalSubmit} />
             <Card
                 pathURL={data}

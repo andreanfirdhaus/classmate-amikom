@@ -17,8 +17,8 @@ function Navbar({ title }) {
     };
 
     const refresh = () => {
-        localStorage.removeItem("dataClassmates"); // Remove data from localStorage
-        localStorage.removeItem("dataGraduated"); // Remove data from localStorage
+        sessionStorage.removeItem("dataClassmates"); // Remove data from sessionStorage
+        sessionStorage.removeItem("dataGraduated"); // Remove data from sessionStorage
 
         window.location.reload(); // And reload the page
     };

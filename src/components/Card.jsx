@@ -22,9 +22,9 @@ function Card({ pathURL, desc }) {
     useEffect(() => {
         setPathURL();
 
-        // Retrieves data from "dataClassmates" in localStorage
+        // Retrieves data from "dataClassmates" in sessionStorage
         const classmatesData = JSON.parse(
-            localStorage.getItem("dataClassmates")
+            sessionStorage.getItem("dataClassmates")
         );
         if (classmatesData && classmatesData.length > 0) {
             setGetLocalStorageClassmates(classmatesData);
@@ -32,8 +32,10 @@ function Card({ pathURL, desc }) {
             setGetLocalStorageClassmates(null);
         }
 
-        // Retrieves data from "dataGraduated" in localStorage
-        const graduatedData = JSON.parse(localStorage.getItem("dataGraduated"));
+        // Retrieves data from "dataGraduated" in sessionStorage
+        const graduatedData = JSON.parse(
+            sessionStorage.getItem("dataGraduated")
+        );
         if (graduatedData && graduatedData.length > 0) {
             setGetLocalStorageGraduated(graduatedData);
         } else {

@@ -23,8 +23,8 @@ function Classmates() {
             }
             setData(newUrl); // Set newUrl (the updated URL of the modal form) into setData
 
-            // Save newUrl (Updated URL) to localStorage
-            localStorage.setItem("dataClassmates", JSON.stringify(newUrl));
+            // Save newUrl (Updated URL) to sessionStorage
+            sessionStorage.setItem("dataClassmates", JSON.stringify(newUrl));
         };
         if (modalClicked) {
             fetchData(startNIM, endNIM);
@@ -48,7 +48,7 @@ function Classmates() {
 
     return (
         <>
-            <Navbar title="kla·smayt" />
+            <Navbar title="/ˈklæs.meɪts/" />
             <Modal updatePathURL={handleModalSubmit} />
             <Card pathURL={data} desc="Your classmates photo" />
         </>
