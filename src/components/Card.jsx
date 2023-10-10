@@ -51,7 +51,7 @@ function Card({ pathURL, desc }) {
                         {getLocalStorageClassmates.map((url, index) => {
                             return (
                                 <div
-                                    className="card w-full bg-base-100 shadow-xl"
+                                    className="card w-full bg-base-100 shadow-md"
                                     key={index}
                                 >
                                     <figure>
@@ -62,7 +62,7 @@ function Card({ pathURL, desc }) {
                                             className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
                                         />
                                     </figure>
-                                    <div className="card-body items-center text-center">
+                                    <div className="py-7 items-center text-center">
                                         <div className="text-sm font-medium">
                                             {url
                                                 .split("/")

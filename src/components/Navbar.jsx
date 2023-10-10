@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "./modal/Button";
 import { PiMoonDuotone, PiSunBold } from "react-icons/pi";
+import Logo from "../components/assets/amikom.png";
 
 function Navbar({ title }) {
     const [theme, setTheme] = useState(
@@ -30,55 +31,66 @@ function Navbar({ title }) {
             .querySelector("html")
             .setAttribute("data-theme", localStorageTheme);
     }, [theme]);
+
     return (
-        <div>
+        <>
             <div className="fixed top-0 left-0 w-full z-10">
-                <div className="container mx-auto w-full md:w-[45rem] flex justify-center">
-                    <div className="menu menu-horizontal bg-base-100 w-full rounded-box sm:rounded-none">
-                        <div className="flex-1">
+                <div className="container mx-auto w-full md:w-[45rem]">
+                    <div className="flex items-center bg-base-100 py-1">
+                        <div className="navbar-start">
                             <button
-                                className="btn btn-sm btn-ghost normal-case text-sm font-semibold tracking-wide"
+                                className="btn btn-sm btn-ghost normal-case text-base font-semibold tracking-wide"
                                 onClick={refresh}
                             >
+                                <span>
+                                    <img
+                                        src={Logo}
+                                        alt="Logo"
+                                        draggable="false"
+                                        className="h-7"
+                                    />
+                                </span>
                                 {title}
                             </button>
                         </div>
+                        <div className="navbar-end flex items-center">
+                            <ul className="menu menu-horizontal px-1">
+                                <li>
+                                    <Button />
+                                </li>
 
-                        <div className="flex px-5 justify-center items-center">
-                            <Button />
-                        </div>
+                                <li>
+                                    <label className="swap swap-rotate btn-sm">
+                                        {/* this hidden checkbox controls the state */}
+                                        <input
+                                            type="checkbox"
+                                            onClick={toggleTheme}
+                                            checked={checked}
+                                            onChange={(e) =>
+                                                setChecked(e.target.checked)
+                                            }
+                                        />
 
-                        <div className="flex-none mr-2 sm:mr-0">
-                            <button className="btn btn-sm btn-square btn-ghost">
-                                <label className="swap swap-rotate">
-                                    {/* this hidden checkbox controls the state */}
-                                    <input
-                                        type="checkbox"
-                                        onClick={toggleTheme}
-                                        checked={checked}
-                                        onChange={(e) =>
-                                            setChecked(e.target.checked)
-                                        }
-                                    />
+                                        {/* sun icon */}
+                                        <PiSunBold
+                                            size={23.5}
+                                            className="swap-off fill-current"
+                                        />
 
-                                    {/* sun icon */}
-                                    <PiSunBold
-                                        size={23.5}
-                                        className="swap-off fill-current"
-                                    />
+                                        {/* moon icon */}
 
-                                    {/* moon icon */}
-                                    <PiMoonDuotone
-                                        size={23.5}
-                                        className="swap-on fill-current"
-                                    />
-                                </label>
-                            </button>
+                                        <PiMoonDuotone
+                                            size={23.5}
+                                            className="swap-on fill-current"
+                                        />
+                                    </label>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

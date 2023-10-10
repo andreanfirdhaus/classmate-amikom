@@ -17,7 +17,7 @@ function Footer() {
                         <li>
                             <NavLink to="/graduated">
                                 <PiGraduationCapFill size={23} />
-                                Graduated
+                                Graduates
                                 <span className="badge badge-sm badge-success"></span>
                             </NavLink>
                         </li>

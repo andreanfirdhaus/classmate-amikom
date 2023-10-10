@@ -47,7 +47,7 @@ function Graduated() {
 
     return (
         <>
-            <Navbar title="/ˈklæs.meɪts/" />
+            <Navbar title="Graduates" />
             <Modal updatePathURL={handleModalSubmit} />
             <Card
                 pathURL={data}

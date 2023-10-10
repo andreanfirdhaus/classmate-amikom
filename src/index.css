@@ -4,7 +4,6 @@
 
 /* Remove to use default font */
 p,
-label,
 button {
     font-family: "Noto Sans Georgian", sans-serif;
     font-weight: 400;

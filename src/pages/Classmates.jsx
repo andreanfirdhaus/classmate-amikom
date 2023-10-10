@@ -48,7 +48,7 @@ function Classmates() {
 
     return (
         <>
-            <Navbar title="/ˈklæs.meɪts/" />
+            <Navbar title="Classmates" />
             <Modal updatePathURL={handleModalSubmit} />
             <Card pathURL={data} desc="Your classmates photo" />
         </>
