@@ -17,11 +17,10 @@ function Modal({ updatePathURL }) {
         setMajorCode("");
         setStartNIM("");
         setEndNIM("");
-        setError("");
+        setError(""); // Reset error messages
 
         const modal = document.getElementById("my_modal_3");
         if (modal) {
-            setError(""); // Reset error messages
             modal.close(); // Close modal
         }
     };
@@ -31,13 +30,14 @@ function Modal({ updatePathURL }) {
         if (yearCode && classOfCode && majorCode && startNIM && endNIM) {
             // Only if all inputs are filled, call the updatePathURL function
             updatePathURL(yearCode, classOfCode, majorCode, startNIM, endNIM);
-            setError(""); // Reset error messages
-
             closeModal(); // Close modal after submit
         } else {
-            setError("Form e isi su"); // Error messages
+            setError("Please complete the form"); // Error messages
         }
     };
+
+    const errorBorder =
+        "border" + (error ? "border-2 border-gray-300" : "border-error");
 
     return (
         <>
@@ -63,7 +63,11 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="20xx"
-                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
+                                        className={`input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400 placeholder:text-xs ${
+                                            error && !yearCode
+                                                ? "border-2 border-error"
+                                                : errorBorder
+                                        }`}
                                         value={yearCode}
                                         onChange={(e) =>
                                             setYearCode(e.target.value)
@@ -82,7 +86,11 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="xx"
-                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
+                                        className={`input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400 placeholder:text-xs ${
+                                            error && !classOfCode
+                                                ? "border-2 border-error"
+                                                : errorBorder
+                                        }`}
                                         value={classOfCode}
                                         onChange={(e) =>
                                             setClassOfCode(e.target.value)
@@ -101,7 +109,11 @@ function Modal({ updatePathURL }) {
                                     <input
                                         type="text"
                                         placeholder="xx"
-                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
+                                        className={`input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400 placeholder:text-xs ${
+                                            error && !majorCode
+                                                ? "border-2 border-error"
+                                                : errorBorder
+                                        }`}
                                         value={majorCode}
                                         onChange={(e) =>
                                             setMajorCode(e.target.value)
@@ -119,8 +131,12 @@ function Modal({ updatePathURL }) {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="xxxx"
-                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
+                                        placeholder="4 digits"
+                                        className={`input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400 placeholder:text-xs ${
+                                            error && !startNIM
+                                                ? "border-2 border-error"
+                                                : errorBorder
+                                        }`}
                                         value={startNIM}
                                         onChange={(e) =>
                                             setStartNIM(e.target.value)
@@ -138,8 +154,12 @@ function Modal({ updatePathURL }) {
                                     </label>
                                     <input
                                         type="text"
-                                        placeholder="xxxx"
-                                        className="input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400"
+                                        placeholder="4 digits"
+                                        className={`input input-bordered input-sm w-full max-w-xs placeholder:tracking-wider placeholder:text-gray-400 placeholder:text-xs ${
+                                            error && !endNIM
+                                                ? "border-2 border-error"
+                                                : errorBorder
+                                        }`}
                                         value={endNIM}
                                         onChange={(e) =>
                                             setEndNIM(e.target.value)
@@ -149,7 +169,7 @@ function Modal({ updatePathURL }) {
                             </div>
                             <div className="col-span-4 row-start-4">
                                 {error && (
-                                    <div className="tracking-wide text-red-500 label-text font-medium text-center py-2">
+                                    <div className="tracking-wide text-error label-text font-medium text-center py-2">
                                         {error}
                                     </div>
                                 )}
