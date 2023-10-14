@@ -54,7 +54,7 @@ function Navbar({ title }) {
                             </button>
                         </div>
                         <div className="navbar-end flex items-center">
-                            <ul className="menu menu-horizontal px-1">
+                            <ul className="menu menu-horizontal gap-2">
                                 <li>
                                     <Button />
                                 </li>
