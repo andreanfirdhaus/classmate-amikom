@@ -5,9 +5,9 @@ import { PiGraduationCapFill, PiUsersThreeFill } from "react-icons/pi";
 function Footer() {
     return (
         <>
-            <div className="fixed bottom-0 left-0 w-full">
+            <div className="fixed bottom-2 left-0 w-full">
                 <div className="flex justify-center">
-                    <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box">
+                    <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box gap-2">
                         <li>
                             <NavLink to="/">
                                 <PiUsersThreeFill size={23} />
