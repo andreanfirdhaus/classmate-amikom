@@ -5,23 +5,24 @@ import getUrl from "../config/getUrl";
 import Modal from "../components/modal/Modal";
 
 function Graduated() {
-    const [data, setData] = React.useState([]);
+    const [url, setUrl] = React.useState([]);
     const [modalClicked, setModalClicked] = useState(false);
 
     const [year, setYear] = useState("");
-    const [classOf, setClassOf] = useState("");
-    const [major, setMajor] = useState("");
+    const [grade, setGrade] = useState("");
+    const [program, setProgram] = useState("");
+
     const [startNIM, setStartNIM] = useState("");
     const [endNIM, setEndNIM] = useState("");
 
     useEffect(() => {
-        const fetchData = async (startNIM, endNIM) => {
+        const fetchData = async (nim_awal, nim_akhir) => {
             const newUrl = [];
-            for (let i = startNIM; i <= endNIM; i++) {
-                const url = getUrl(year, classOf, major, i).graduated;
+            for (let i = nim_awal; i <= nim_akhir; i++) {
+                const url = getUrl(year, grade, program, i).graduated;
                 newUrl.push(url);
             }
-            setData(newUrl);
+            setUrl(newUrl);
 
             sessionStorage.setItem("dataGraduated", JSON.stringify(newUrl));
         };
@@ -31,17 +32,17 @@ function Graduated() {
     }, [startNIM, endNIM, modalClicked]);
 
     const handleModalSubmit = (
-        yearCode,
-        classOfCode,
-        majorCode,
-        startNIM,
-        endNIM
+        tahun_angkatan,
+        kode_prodi,
+        nim_awal,
+        nim_akhir
     ) => {
-        setYear(yearCode);
-        setClassOf(classOfCode);
-        setMajor(majorCode);
-        setStartNIM(startNIM);
-        setEndNIM(endNIM);
+        setYear(tahun_angkatan);
+        setGrade(tahun_angkatan.slice(2));
+        setProgram(kode_prodi);
+
+        setStartNIM(nim_awal);
+        setEndNIM(nim_akhir);
         setModalClicked(true);
     };
 
@@ -50,7 +51,7 @@ function Graduated() {
             <Navbar title="Graduates" />
             <Modal updatePathURL={handleModalSubmit} />
             <Card
-                pathURL={data}
+                pathURL={url}
                 desc="your classmates photo who have graduated"
             />
         </>

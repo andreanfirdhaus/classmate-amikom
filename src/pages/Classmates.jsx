@@ -5,23 +5,24 @@ import getUrl from "../config/getUrl";
 import Modal from "../components/modal/Modal";
 
 function Classmates() {
-    const [data, setData] = useState([]);
+    const [url, setUrl] = useState([]);
     const [modalClicked, setModalClicked] = useState(false);
 
     const [year, setYear] = useState("");
-    const [classOf, setClassOf] = useState("");
-    const [major, setMajor] = useState("");
+    const [grade, setGrade] = useState("");
+    const [program, setProgram] = useState("");
+
     const [startNIM, setStartNIM] = useState("");
     const [endNIM, setEndNIM] = useState("");
 
     useEffect(() => {
-        const fetchData = async (startNIM, endNIM) => {
+        const fetchData = async (nim_awal, nim_akhir) => {
             const newUrl = [];
-            for (let i = startNIM; i <= endNIM; i++) {
-                const url = getUrl(year, classOf, major, i).classmates;
+            for (let i = nim_awal; i <= nim_akhir; i++) {
+                const url = getUrl(year, grade, program, i).classmates;
                 newUrl.push(url);
             }
-            setData(newUrl); // Set newUrl (the updated URL of the modal form) into setData
+            setUrl(newUrl); // Set newUrl (the updated URL of the modal form) into setUrl
 
             // Save newUrl (Updated URL) to sessionStorage
             sessionStorage.setItem("dataClassmates", JSON.stringify(newUrl));
@@ -32,17 +33,17 @@ function Classmates() {
     }, [startNIM, endNIM, modalClicked]);
 
     const handleModalSubmit = (
-        yearCode,
-        classOfCode,
-        majorCode,
-        startNIM,
-        endNIM
+        tahun_angkatan,
+        kode_prodi,
+        nim_awal,
+        nim_akhir
     ) => {
-        setYear(yearCode);
-        setClassOf(classOfCode);
-        setMajor(majorCode);
-        setStartNIM(startNIM);
-        setEndNIM(endNIM);
+        setYear(tahun_angkatan);
+        setGrade(tahun_angkatan.slice(2)); // returns a 4 digit number with the value "string" but will only *use the last 2 digits
+        setProgram(kode_prodi);
+
+        setStartNIM(nim_awal);
+        setEndNIM(nim_akhir);
         setModalClicked(true);
     };
 
@@ -50,7 +51,7 @@ function Classmates() {
         <>
             <Navbar title="Classmates" />
             <Modal updatePathURL={handleModalSubmit} />
-            <Card pathURL={data} desc="Your classmates photo" />
+            <Card pathURL={url} desc="Your classmates photo" />
         </>
     );
 }
