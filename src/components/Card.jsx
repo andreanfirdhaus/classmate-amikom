@@ -59,7 +59,7 @@ function Card({ pathURL, desc }) {
                                             src={url}
                                             effect="blur"
                                             draggable="false"
-                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
+                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md pointer-events-none"
                                         />
                                     </figure>
                                     <div className="py-7 items-center text-center">
@@ -101,7 +101,7 @@ function Card({ pathURL, desc }) {
                                             src={urlGraduated}
                                             effect="blur"
                                             draggable="false"
-                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
+                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md pointer-events-none"
                                         />
                                     </figure>
                                     <div className="card-body items-center text-center">
