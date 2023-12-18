@@ -21,12 +21,6 @@ function Footer() {
                                 <span className="badge badge-sm badge-success"></span>
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <a>
-                                Stats
-                                <span className="badge badge-xs badge-info"></span>
-                            </a>
-                        </li> */}
                     </ul>
                 </div>
             </div>

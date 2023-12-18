@@ -1,12 +1,12 @@
-const getUrl = (batchYear, classOf, majorCode, nim) => {
+const getUrl = (year, grade, program, nim) => {
     return {
         classmates: `${
             import.meta.env.VITE_BASE_URL1
-        }/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
+        }/${year}/${grade}_${program}_${nim}.jpg`,
 
         graduated: `${
             import.meta.env.VITE_BASE_URL2
-        }/${batchYear}/${classOf}_${majorCode}_${nim}.jpg`,
+        }/${year}/${grade}_${program}_${nim}.jpg`,
     };
 };
 
