@@ -4,8 +4,9 @@ import {
     trackWindowScroll,
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import Hero from "./Hero";
 
-function Card({ pathURL, desc }) {
+function Card({ pathURL }) {
     const [getLocalStorageClassmates, setGetLocalStorageClassmates] = useState(
         []
     );
@@ -44,52 +45,46 @@ function Card({ pathURL, desc }) {
     }, [pathURL]);
 
     return (
-        <>
+        <section>
             {currentPath === "/" ? (
                 getLocalStorageClassmates ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 content-center">
-                        {getLocalStorageClassmates.map((url, index) => {
-                            return (
-                                <div
-                                    className="card w-full bg-base-100 shadow-md"
-                                    key={index}
-                                >
-                                    <figure>
-                                        <LazyLoadImage
-                                            src={url}
-                                            effect="blur"
-                                            draggable="false"
-                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
-                                        />
-                                    </figure>
-                                    <div className="py-7 items-center text-center">
-                                        <div className="text-sm font-medium">
-                                            {url
-                                                .split("/")
-                                                .pop()
-                                                .split(".")[0]
-                                                .replace(/_/g, ".")}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 pb-3.5 content-center">
+                        {getLocalStorageClassmates.map(
+                            (urlClassmates, index) => {
+                                return (
+                                    <div
+                                        className="card w-full bg-base-100 shadow-md"
+                                        key={index}
+                                    >
+                                        <figure>
+                                            <LazyLoadImage
+                                                src={urlClassmates}
+                                                effect="blur"
+                                                draggable="false"
+                                                className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md pointer-events-none"
+                                            />
+                                        </figure>
+                                        <div className="py-7 items-center text-center">
+                                            <p className="text-sm font-medium">
+                                                {urlClassmates
+                                                    .split("/")
+                                                    .pop()
+                                                    .split(".")[0]
+                                                    .replace(/_/g, ".")}
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            }
+                        )}
                     </div>
                 ) : (
                     // If the data from "dataClassmates" is null/does not exist, then display the following elements
-                    <div className="flex items-center h-[40rem] sm:h-[48rem]">
-                        <div className="hero h-96 bg-base-200">
-                            <div className="hero-content text-center">
-                                <div className="max-w-md">
-                                    <p className="p-6">{desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Hero desc="Your classmates photo" />
                 )
             ) : currentPath === "/graduated" ? (
                 getLocalStorageGraduated ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 content-center">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 pb-3.5 content-center">
                         {getLocalStorageGraduated.map((urlGraduated, index) => {
                             return (
                                 <div
@@ -101,17 +96,17 @@ function Card({ pathURL, desc }) {
                                             src={urlGraduated}
                                             effect="blur"
                                             draggable="false"
-                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
+                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md pointer-events-none"
                                         />
                                     </figure>
                                     <div className="card-body items-center text-center">
-                                        <div className="text-sm font-medium">
+                                        <p className="text-sm font-medium">
                                             {urlGraduated
                                                 .split("/")
                                                 .pop()
                                                 .split(".")[0]
                                                 .replace(/_/g, ".")}
-                                        </div>
+                                        </p>
                                     </div>
                                 </div>
                             );
@@ -119,18 +114,10 @@ function Card({ pathURL, desc }) {
                     </div>
                 ) : (
                     // If the data from "dataGraduated" is null/does not exist, then display the following elements
-                    <div className="flex items-center h-[40rem] sm:h-[48rem]">
-                        <div className="hero h-96 bg-base-200">
-                            <div className="hero-content text-center">
-                                <div className="max-w-sm">
-                                    <p className="p-6">{desc}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Hero desc="your classmates photo who have graduated" />
                 )
             ) : null}
-        </>
+        </section>
     );
 }
 

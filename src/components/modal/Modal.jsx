@@ -14,7 +14,7 @@ const schema = yup
     })
     .required();
 
-function Modal({ updatePathURL }) {
+export default function Modal({ updatePathURL }) {
     const {
         register,
         handleSubmit,
@@ -177,5 +177,3 @@ function Modal({ updatePathURL }) {
         </>
     );
 }
-
-export default Modal;
