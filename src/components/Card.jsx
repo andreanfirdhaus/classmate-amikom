@@ -48,35 +48,33 @@ function Card({ pathURL }) {
         <section>
             {currentPath === "/" ? (
                 getLocalStorageClassmates ? (
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 pb-3.5 content-center">
-                        {getLocalStorageClassmates.map(
-                            (urlClassmates, index) => {
-                                return (
-                                    <div
-                                        className="card w-full bg-base-100 shadow-md"
-                                        key={index}
-                                    >
-                                        <figure>
-                                            <LazyLoadImage
-                                                src={urlClassmates}
-                                                effect="blur"
-                                                draggable="false"
-                                                className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md pointer-events-none"
-                                            />
-                                        </figure>
-                                        <div className="py-7 items-center text-center">
-                                            <p className="text-sm font-medium">
-                                                {urlClassmates
-                                                    .split("/")
-                                                    .pop()
-                                                    .split(".")[0]
-                                                    .replace(/_/g, ".")}
-                                            </p>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 content-center">
+                        {getLocalStorageClassmates.map((url, index) => {
+                            return (
+                                <div
+                                    className="card w-full bg-base-100 shadow-md"
+                                    key={index}
+                                >
+                                    <figure>
+                                        <LazyLoadImage
+                                            src={url}
+                                            effect="blur"
+                                            draggable="false"
+                                            className="w-52 h-52 sm:w-56 sm:h-56 object-cover object-top rounded-md"
+                                        />
+                                    </figure>
+                                    <div className="py-7 items-center text-center">
+                                        <div className="text-sm font-medium">
+                                            {url
+                                                .split("/")
+                                                .pop()
+                                                .split(".")[0]
+                                                .replace(/_/g, ".")}
                                         </div>
                                     </div>
-                                );
-                            }
-                        )}
+                                </div>
+                            );
+                        })}
                     </div>
                 ) : (
                     // If the data from "dataClassmates" is null/does not exist, then display the following elements
