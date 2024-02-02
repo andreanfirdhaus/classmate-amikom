@@ -33,23 +33,21 @@ function Navbar({ title }) {
     }, [theme]);
 
     return (
-        <>
-            <div className="fixed top-0 left-0 w-full z-10">
+        <header>
+            <nav className="fixed top-0 left-0 w-full z-10">
                 <div className="container mx-auto w-full md:w-[45rem]">
                     <div className="flex items-center bg-base-100 py-1">
                         <div className="navbar-start">
                             <button
-                                className="btn btn-sm btn-ghost normal-case text-base font-semibold tracking-wide"
+                                className="btn btn-sm btn-ghost normal-case text-base font-semibold tracking-wide hover:bg-transparent"
                                 onClick={refresh}
                             >
-                                <span>
-                                    <img
-                                        src={Logo}
-                                        alt="Logo"
-                                        draggable="false"
-                                        className="h-7"
-                                    />
-                                </span>
+                                <img
+                                    src={Logo}
+                                    alt="Logo"
+                                    draggable="false"
+                                    className="h-7"
+                                />
                                 {title}
                             </button>
                         </div>
@@ -89,8 +87,8 @@ function Navbar({ title }) {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </nav>
+        </header>
     );
 }
 

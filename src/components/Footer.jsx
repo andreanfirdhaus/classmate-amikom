@@ -4,7 +4,7 @@ import { PiGraduationCapFill, PiUsersThreeFill } from "react-icons/pi";
 
 function Footer() {
     return (
-        <>
+        <footer>
             <div className="fixed bottom-2 left-0 w-full">
                 <div className="flex justify-center">
                     <ul className="menu menu-sm menu-horizontal bg-base-200 rounded-box gap-2">
@@ -24,7 +24,7 @@ function Footer() {
                     </ul>
                 </div>
             </div>
-        </>
+        </footer>
     );
 }
 

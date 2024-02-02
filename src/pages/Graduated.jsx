@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import getUrl from "../config/getUrl";
 import Modal from "../components/modal/Modal";
@@ -47,14 +46,10 @@ function Graduated() {
     };
 
     return (
-        <>
-            <Navbar title="Graduates" />
+        <main className="container mx-auto w-full px-6 sm:px-0 md:w-[40rem] py-14">
             <Modal updatePathURL={handleModalSubmit} />
-            <Card
-                pathURL={url}
-                desc="your classmates photo who have graduated"
-            />
-        </>
+            <Card pathURL={url} />
+        </main>
     );
 }
 
