@@ -8,7 +8,6 @@ import {
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -18,8 +17,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { z } from "zod";
+import { useState, useContext } from 'react';
+import { DataContext } from '../data-context';
 
 const formSchema = z.object({
     tahunAngkatan: z.string(),
@@ -28,17 +29,16 @@ const formSchema = z.object({
     nimAkhir: z.string().min(1, { message: "Field NIM is required." }),
 });
 
+type formSchemaValues = z.infer<typeof formSchema>
+
 export default function DialogForm() {
-    const form = useForm<z.infer<typeof formSchema>>({
+    const { setData } = useContext(DataContext);
+    const form = useForm<formSchemaValues>({
         resolver: zodResolver(formSchema),
-        defaultValues: {
-            nimAwal: "",
-            nimAkhir: "",
-        },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+    function onSubmit(data: formSchemaValues) {
+        setData(data);
     }
 
     return (
@@ -54,7 +54,7 @@ export default function DialogForm() {
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Select an tahun angkatan" />
+                                        <SelectValue placeholder="Year" />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -84,7 +84,7 @@ export default function DialogForm() {
                                     defaultValue={field.value}
                                 >
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Select prodi" />
+                                        <SelectValue placeholder="Prodi" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="11">Informatika</SelectItem>
