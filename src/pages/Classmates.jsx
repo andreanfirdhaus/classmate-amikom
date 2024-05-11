@@ -31,13 +31,17 @@ export default function Classmates() {
     <main className="container mx-auto w-full px-4 sm:px-0 md:w-[48.5rem]">
       {url.length == 0 ? (
         <div>
-          <div className="h-screen flex justify-center items-center">
+          <div className="h-screen flex flex-col justify-center items-center">
             <LottiePlayer
               src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
               width="308px"
             />
+            <h1 className="text-base text-center text-foreground -mt-4">
+              No photos found for <br />
+              <span className="font-semibold">classmates</span>
+            </h1>
           </div>
-          <Footer className="py-4 fixed bottom-0 right-0 w-full z-10" />
+          <Footer className="fixed bottom-0 right-0 w-full z-10" />
         </div>
       ) : (
         <div>
