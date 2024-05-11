@@ -5,8 +5,15 @@
     "baseUrl": ".",
     "jsx": "react-jsx", // this line
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "moduleResolution": "node",
     // ...
-  }
+  },
+  "include": [
+    "src",
+    "src/index.d.ts",
+  ],
 }
