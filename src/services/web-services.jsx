@@ -1,4 +1,4 @@
-const getUrl = (year, grade, program, nim) => {
+const getData = (year, grade, program, nim) => {
   return {
     classmates: `${
       import.meta.env.VITE_BASE_URL1
@@ -10,4 +10,4 @@ const getUrl = (year, grade, program, nim) => {
   };
 };
 
-export default getUrl;
+export default getData;
