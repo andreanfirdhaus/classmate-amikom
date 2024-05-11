@@ -28,7 +28,7 @@ export default function Graduated() {
   }, [data]);
 
   return (
-    <main className="container mx-auto w-full px-6 sm:px-0 md:w-[48.5rem]">
+    <main className="container mx-auto w-full px-4 sm:px-0 md:w-[48.5rem]">
       {url.length == 0 ? (
         <div>
           <div className="h-screen flex justify-center items-center">

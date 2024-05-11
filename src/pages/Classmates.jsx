@@ -28,7 +28,7 @@ export default function Classmates() {
   }, [data]);
 
   return (
-    <main className="container mx-auto w-full px-6 sm:px-0 md:w-[48.5rem]">
+    <main className="container mx-auto w-full px-4 sm:px-0 md:w-[48.5rem]">
       {url.length == 0 ? (
         <div>
           <div className="h-screen flex justify-center items-center">
@@ -37,7 +37,7 @@ export default function Classmates() {
               width="308px"
             />
           </div>
-          <Footer className=" fixed bottom-0 right-0 w-full z-10" />
+          <Footer className="py-4 fixed bottom-0 right-0 w-full z-10" />
         </div>
       ) : (
         <div>
