@@ -20,7 +20,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useFormState } from "react-hook-form";
 import { z } from "zod";
 import { useState, useContext } from 'react';
-import { DataContext } from '../data-context';
+import { DataContext } from '@/components/data-context';
 
 const formSchema = z.object({
     tahunAngkatan: z.string(),

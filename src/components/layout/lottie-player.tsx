@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Player } from '@lottiefiles/react-lottie-player';
 
 interface LottiePlayerPropsType {

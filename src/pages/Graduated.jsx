@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../components/data-context";
+import { DataContext } from "@/components/data-context";
 import getData from "../services/web-services";
-import Content from "../components/layout/content";
-import LottiePlayer from "../components/layout/lottie-player";
-import Footer from "../components/layout/footer";
+import Content from "@/components/layout/content";
+import LottiePlayer from "@/components/layout/lottie-player";
+import Footer from "@/components/layout/footer";
 
 export default function Graduated() {
   const { data } = useContext(DataContext);
@@ -37,7 +37,7 @@ export default function Graduated() {
               width="308px"
             />
           </div>
-          <Footer className=" fixed bottom-0 right-0 w-full z-10" />
+          <Footer className="py-4 fixed bottom-0 right-0 w-full z-10" />
         </div>
       ) : (
         <div>

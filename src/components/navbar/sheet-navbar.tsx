@@ -16,12 +16,6 @@ export default function SheetNavbar() {
         </Button>
       </SheetTrigger>
       <SheetContent>
-        {/* <SheetHeader>
-                    <SheetTitle>Navigation</SheetTitle>
-                    <SheetDescription>
-                        description
-                    </SheetDescription>
-                </SheetHeader> */}
         <div className="flex flex-col h-screen gap-6 justify-center items-center">
           <NavLink to="/">
             <p className="text-base font-medium capitalize">my homie</p>

@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-import { DataContext } from "../components/data-context";
+import { DataContext } from "@/components/data-context";
 import getData from "../services/web-services";
-import Content from "../components/layout/content";
-import LottiePlayer from "../components/layout/lottie-player";
-import Footer from "../components/layout/footer";
+import Content from "@/components/layout/content";
+import LottiePlayer from "@/components/layout/lottie-player";
+import Footer from "@/components/layout/footer";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);

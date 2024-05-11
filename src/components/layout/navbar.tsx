@@ -2,11 +2,9 @@ import { useState, useEffect } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import amikomLight from "../../components/assets/amikom-light.png"
-import amikomDark from "../../components/assets/amikom-dark.png";
-import amikom from "../../components/assets/amikom.png";
-import SheetNavbar from "../navbar/sheet-navbar";
-import DialogForm from "../navbar/dialog-form";
+import { amikomLight, amikomDark, amikom } from "@/components/assets/assets";
+import SheetNavbar from '@/components/navbar/sheet-navbar';
+import DialogForm from "@/components/navbar/dialog-form";
 import {
   Dialog,
   DialogContent,
