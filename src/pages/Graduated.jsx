@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../components/data-context";
-import getUrl from "../config/getUrl";
+import getData from "../services/web-services";
 import Content from "../components/layout/content";
 
 export default function Graduated() {
@@ -10,7 +10,7 @@ export default function Graduated() {
   const fetchData = async () => {
     const newUrl = [];
     for (let i = data.nimAwal; i <= data.nimAkhir; i++) {
-      const url = getUrl(
+      const url = getData(
         data.tahunAngkatan,
         data.tahunAngkatan.slice(2),
         data.programStudi,
