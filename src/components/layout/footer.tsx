@@ -1,9 +1,14 @@
 import React from 'react'
 import { Coffee } from 'lucide-react'
+import { cn } from '@/lib/utils';
 
-export default function Footer() {
+interface FooterProps {
+    className?: string;
+}
+
+export default function Footer({ className }: FooterProps) {
     return (
-        <footer className="py-8 sm:py-12">
+        <footer className={cn("py-4 sm:py-6", className)}>
             <div className="flex gap-2 justify-center items-center">
                 <p className='text-sm text-foreground'>
                     Crafted by <span><a href="https://github.com/andreanfirdhaus" target="_blank" rel="noopener" className='underline underline-offset-4'>me</a></span> with

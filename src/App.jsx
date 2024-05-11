@@ -5,7 +5,6 @@ import Graduated from "./pages/graduated";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "./components/layout/navbar";
 import { DataProvider } from "@/components/data-context";
-import Footer from "./components/layout/footer";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="/" element={<Classmates />} />
           <Route path="graduated" element={<Graduated />} />
         </Routes>
-        <Footer />
       </DataProvider>
     </ThemeProvider>
   );
