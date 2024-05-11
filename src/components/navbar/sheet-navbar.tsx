@@ -18,10 +18,10 @@ export default function SheetNavbar() {
       <SheetContent>
         <div className="flex flex-col h-screen gap-6 justify-center items-center">
           <NavLink to="/">
-            <p className="text-base font-medium capitalize">my homie</p>
+            <p className="text-base font-medium capitalize tracking-normal hover:text-muted-foreground">my homie</p>
           </NavLink>
           <NavLink to="/graduated">
-            <p className="text-base font-medium capitalize">
+            <p className="text-base font-medium capitalize tracking-normal hover:text-muted-foreground">
               who&apos;s graduated
             </p>
           </NavLink>
