@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Classmates from "./pages/classmates";
-import Graduated from "./pages/graduated";
+import Classmates from "./pages/Classmates";
+import Graduated from "./pages/Graduated";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "./components/layout/navbar";
 import { DataProvider } from "@/components/data-context";
