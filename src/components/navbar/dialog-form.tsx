@@ -25,8 +25,8 @@ import { DataContext } from '@/components/data-context';
 const formSchema = z.object({
     tahunAngkatan: z.string(),
     programStudi: z.string(),
-    nimAwal: z.string().min(1, { message: "Field NIM is required." }),
-    nimAkhir: z.string().min(1, { message: "Field NIM is required." }),
+    nimAwal: z.string().min(4, { message: "NIM Awal must have at least 4 digits." }).max(4, { message: "NIM Awal must be a maximum of 4 digits." }),
+    nimAkhir: z.string().min(4, { message: "NIM Akhir must have at least 4 digits." }).max(4, { message: "NIM Akhir must be a maximum of 4 digits." }),
 });
 
 type formSchemaValues = z.infer<typeof formSchema>
