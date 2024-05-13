@@ -2,20 +2,22 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Classmates from "./pages/Classmates";
 import Graduated from "./pages/Graduated";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/layout/navbar";
+import { DataProvider } from "@/components/data-context";
 
 function App() {
-    return (
-        <>
-            <Navbar title="Amikom" />
-            <Routes>
-                <Route path="/" element={<Classmates />} />
-                <Route path="graduated" element={<Graduated />} />
-            </Routes>
-            <Footer />
-        </>
-    );
+  return (
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <DataProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Classmates />} />
+          <Route path="graduated" element={<Graduated />} />
+        </Routes>
+      </DataProvider>
+    </ThemeProvider>
+  );
 }
 
 export default App;

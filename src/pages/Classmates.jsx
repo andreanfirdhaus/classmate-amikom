@@ -1,57 +1,56 @@
-import React, { useState, useEffect } from "react";
-import Card from "../components/Card";
-import getUrl from "../config/getUrl";
-import Modal from "../components/modal/Modal";
+import { useState, useEffect, useContext } from "react";
+import { DataContext } from "@/components/data-context";
+import getData from "../services/web-services";
+import Content from "@/components/layout/content";
+import LottiePlayer from "@/components/layout/lottie-player";
+import Footer from "@/components/layout/footer";
 
-function Classmates() {
-    const [url, setUrl] = useState([]);
-    const [modalClicked, setModalClicked] = useState(false);
+export default function Classmates() {
+  const { data } = useContext(DataContext);
+  const [url, setUrl] = useState([]);
 
-    const [year, setYear] = useState("");
-    const [grade, setGrade] = useState("");
-    const [program, setProgram] = useState("");
+  const fetchData = async () => {
+    const newUrl = [];
+    for (let i = data.nimAwal; i <= data.nimAkhir; i++) {
+      const url = getData(
+        data.tahunAngkatan,
+        data.tahunAngkatan.slice(2),
+        data.programStudi,
+        i,
+      ).classmates;
+      newUrl.push(url);
+    }
+    setUrl(newUrl);
+  };
 
-    const [startNIM, setStartNIM] = useState("");
-    const [endNIM, setEndNIM] = useState("");
+  useEffect(() => {
+    fetchData();
+  }, [data]);
 
-    useEffect(() => {
-        const fetchData = async (nim_awal, nim_akhir) => {
-            const newUrl = [];
-            for (let i = nim_awal; i <= nim_akhir; i++) {
-                const url = getUrl(year, grade, program, i).classmates;
-                newUrl.push(url);
-            }
-            setUrl(newUrl); // Set newUrl (the updated URL of the modal form) into setUrl
-
-            // Save newUrl (Updated URL) to sessionStorage
-            sessionStorage.setItem("dataClassmates", JSON.stringify(newUrl));
-        };
-        if (modalClicked) {
-            fetchData(startNIM, endNIM);
-        }
-    }, [startNIM, endNIM, modalClicked]);
-
-    const handleModalSubmit = (
-        tahun_angkatan,
-        kode_prodi,
-        nim_awal,
-        nim_akhir
-    ) => {
-        setYear(tahun_angkatan);
-        setGrade(tahun_angkatan.slice(2)); // returns a 4 digit number with the value "string" but will only *use the last 2 digits
-        setProgram(kode_prodi);
-
-        setStartNIM(nim_awal);
-        setEndNIM(nim_akhir);
-        setModalClicked(true);
-    };
-
-    return (
-        <main className="container mx-auto w-full px-6 sm:px-0 md:w-[40rem] py-14">
-            <Modal updatePathURL={handleModalSubmit} />
-            <Card pathURL={url} />
-        </main>
-    );
+  return (
+    <main className="container mx-auto w-full px-4 sm:px-0 md:w-[48.5rem]">
+      {url.length == 0 ? (
+        <div>
+          <div className="h-screen flex flex-col justify-center items-center">
+            <LottiePlayer
+              src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
+              width="308px"
+            />
+            <h1 className="text-base text-center text-foreground -mt-4">
+              No photos found for <br />
+              <span className="font-semibold">classmates</span>
+            </h1>
+          </div>
+          <Footer className="fixed bottom-0 right-0 w-full z-10" />
+        </div>
+      ) : (
+        <div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center mt-20">
+            <Content data={url} />
+          </div>
+          <Footer />
+        </div>
+      )}
+    </main>
+  );
 }
-
-export default Classmates;
