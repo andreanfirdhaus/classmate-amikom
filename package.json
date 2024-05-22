@@ -1,7 +1,7 @@
 {
-  "name": "classmates",
+  "name": "classmate",
   "author": "andreanfirdhaus",
-  "description": "simple application to display a list of photos of class friends and those who have graduated at Amikom Yogyakarta",
+  "description": "A simple application to display a list of classmates and alumni of Amikom University Yogyakarta based on photos.",
   "private": true,
   "version": "2.0.0",
   "type": "module",
@@ -27,6 +27,7 @@
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.51.4",
     "react-lazy-load-image-component": "^1.6.0",
     "react-lottie-player": "^2.0.0",

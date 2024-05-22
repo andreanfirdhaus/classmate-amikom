@@ -4,6 +4,7 @@ import getData from "../services/web-services";
 import Content from "@/components/layout/content";
 import LottiePlayer from "@/components/layout/lottie-player";
 import Footer from "@/components/layout/footer";
+import { Helmet } from "react-helmet-async";
 
 export default function Graduated() {
   const { data } = useContext(DataContext);
@@ -29,6 +30,18 @@ export default function Graduated() {
 
   return (
     <main className="container mx-auto px-4 max-w-[48.5rem]">
+      <Helmet>
+        <title>Who&apos;s Graduated</title>
+        <meta
+          name="description"
+          content="View Your Classmate Who's Graduated"
+        />
+        <meta property="og:title" content="Graduated" />
+        <link
+          rel="canonical"
+          href="https://classmate-amikom.vercel.app/graduated"
+        />
+      </Helmet>
       {url.length == 0 ? (
         <div>
           <div className="fixed inset-0 flex flex-col justify-center items-center">
