@@ -28,10 +28,10 @@ export default function Graduated() {
   }, [data]);
 
   return (
-    <main className="container mx-auto w-full px-4 sm:px-0 md:w-[48.5rem]">
+    <main className="container mx-auto px-4 max-w-[48.5rem]">
       {url.length == 0 ? (
         <div>
-          <div className="h-screen flex flex-col justify-center items-center">
+          <div className="fixed inset-0 flex flex-col justify-center items-center">
             <LottiePlayer
               src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
               width="308px"
@@ -41,7 +41,7 @@ export default function Graduated() {
               <span className="font-semibold">graduated</span>
             </h1>
           </div>
-          <Footer className="py-4 fixed bottom-0 right-0 w-full z-10" />
+          <Footer className="fixed bottom-0 right-0 w-full z-10" />
         </div>
       ) : (
         <div>
