@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Allow: /graduated
+
+sitemap: https://classmate-amikom.vercel.app/sitemap.xml
