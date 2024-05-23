@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import { DataContext } from "@/components/data-context";
 import getData from "../services/web-services";
 import Content from "@/components/layout/content";
 import LottiePlayer from "@/components/layout/lottie-player";
 import Footer from "@/components/layout/footer";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/seo";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);
@@ -29,13 +29,13 @@ export default function Classmates() {
   }, [data]);
 
   return (
-    <main className="container mx-auto px-4 max-w-[48.5rem]">
-      <Helmet>
-        <title>My Homie</title>
-        <meta name="description" content="View Your Classmates' Photos" />
-        <meta property="og:title" content="Classmate" />
-        <link rel="canonical" href="https://classmate-amikom.vercel.app/" />
-      </Helmet>
+    <Fragment>
+      <SEO
+        title="Classmate"
+        description="View Your Classmates' Photos"
+        name="Classmate Amikom"
+        domain="https://classmate-amikom.vercel.app/"
+      />
       {url.length == 0 ? (
         <div>
           <div className="fixed inset-0 flex flex-col justify-center items-center">
@@ -58,6 +58,6 @@ export default function Classmates() {
           <Footer />
         </div>
       )}
-    </main>
+    </Fragment>
   );
 }
