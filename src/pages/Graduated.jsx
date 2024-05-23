@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import { DataContext } from "@/components/data-context";
 import getData from "../services/web-services";
 import Content from "@/components/layout/content";
 import LottiePlayer from "@/components/layout/lottie-player";
 import Footer from "@/components/layout/footer";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/seo";
 
 export default function Graduated() {
   const { data } = useContext(DataContext);
@@ -29,19 +29,13 @@ export default function Graduated() {
   }, [data]);
 
   return (
-    <main className="container mx-auto px-4 max-w-[48.5rem]">
-      <Helmet>
-        <title>Who&apos;s Graduated</title>
-        <meta
-          name="description"
-          content="View Your Classmate Who's Graduated"
-        />
-        <meta property="og:title" content="Graduated" />
-        <link
-          rel="canonical"
-          href="https://classmate-amikom.vercel.app/graduated"
-        />
-      </Helmet>
+    <Fragment>
+      <SEO
+        title="Who's Graduated"
+        description="View Your Classmate Who's Graduated"
+        name="Classmate Amikom"
+        domain="https://classmate-amikom.vercel.app/graduated"
+      />
       {url.length == 0 ? (
         <div>
           <div className="fixed inset-0 flex flex-col justify-center items-center">
@@ -64,6 +58,6 @@ export default function Graduated() {
           <Footer />
         </div>
       )}
-    </main>
+    </Fragment>
   );
 }

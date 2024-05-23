@@ -14,10 +14,12 @@ function App() {
       <DataProvider>
         <HelmetProvider context={helmetContext}>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Classmates />} />
-            <Route path="graduated" element={<Graduated />} />
-          </Routes>
+          <main className="container mx-auto px-4 max-w-[48.5rem]">
+            <Routes>
+              <Route path="/" element={<Classmates />} />
+              <Route path="graduated" element={<Graduated />} />
+            </Routes>
+          </main>
         </HelmetProvider>
       </DataProvider>
     </ThemeProvider>
