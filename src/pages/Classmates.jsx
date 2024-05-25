@@ -32,7 +32,7 @@ export default function Classmates() {
     <Fragment>
       <SEO
         title="Classmate"
-        description="View Your Classmates' Photos"
+        description="A simple application to display a list of classmates and alumni of Amikom University Yogyakarta based on photos."
         name="Classmate Amikom"
         domain="https://classmate-amikom.vercel.app/"
       />
