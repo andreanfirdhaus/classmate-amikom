@@ -3,8 +3,8 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { amikomLight, amikomDark, amikom } from "@/components/assets/assets";
-import SheetNavbar from '@/components/navbar/sheet-navbar';
-import DialogForm from "@/components/navbar/dialog-form";
+import SheetNavbar from '@/components/layout/navbar/sheet-navbar';
+import DialogForm from "@/components/layout/navbar/dialog-form";
 import {
   Dialog,
   DialogContent,
