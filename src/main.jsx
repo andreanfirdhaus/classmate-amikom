@@ -9,7 +9,7 @@ import App from "./App.jsx";
 import "./global.css";
 import Classmates from "./pages/Classmates.jsx";
 import Graduated from "./pages/Graduated.jsx";
-import PageNotFound from "@/components/404.tsx";
+import PageNotFound from "@/components/layout/error-client.tsx";
 
 const router = createBrowserRouter([
   {
