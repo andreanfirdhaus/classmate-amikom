@@ -17,10 +17,14 @@ export default function SheetNavbar() {
       </SheetTrigger>
       <SheetContent>
         <div className="flex flex-col h-screen gap-6 justify-center items-center">
-          <NavLink to="/">
+          <NavLink to="/" className={({ isActive }) =>
+            isActive ? "text-muted-foreground" : ""
+          }>
             <p className="text-base font-medium capitalize tracking-normal hover:text-muted-foreground">my homie</p>
           </NavLink>
-          <NavLink to="/graduated">
+          <NavLink to="/graduated" className={({ isActive }) =>
+            isActive ? "text-muted-foreground" : ""
+          }>
             <p className="text-base font-medium capitalize tracking-normal hover:text-muted-foreground">
               who&apos;s graduated
             </p>
