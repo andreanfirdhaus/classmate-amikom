@@ -37,7 +37,7 @@ export default function Graduated() {
         domain="https://classmate-amikom.vercel.app/graduated"
       />
       {url.length == 0 ? (
-        <div>
+        <>
           <div className="fixed inset-0 flex flex-col justify-center items-center">
             <LottiePlayer
               src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
@@ -49,14 +49,14 @@ export default function Graduated() {
             </h1>
           </div>
           <Footer className="fixed bottom-0 right-0 w-full z-10" />
-        </div>
+        </>
       ) : (
-        <div>
+        <>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center mt-20">
             <Content data={url} />
           </div>
           <Footer />
-        </div>
+        </>
       )}
     </Fragment>
   );
