@@ -9,7 +9,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { ImageNotFound } from "@/components/assets/assets";
+import { ImageNotFound } from "@/assets/assets";
 
 function Content({ data }: { data: FormDataValues }) {
     const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {

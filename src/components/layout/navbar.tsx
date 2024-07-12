@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { amikomLight, amikomDark, amikom } from "@/components/assets/assets";
+import { amikomLight, amikomDark, amikom } from "@/assets/assets";
 import SheetNavbar from '@/components/layout/navbar/sheet-navbar';
 import DialogForm from "@/components/layout/navbar/dialog-form";
 import {
