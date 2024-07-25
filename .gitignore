@@ -28,3 +28,6 @@ dist-ssr
 # Ignore artifacts:
 build
 coverage
+
+.vercel
+vercel.json
