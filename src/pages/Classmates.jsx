@@ -1,10 +1,18 @@
 import { useState, useEffect, useContext, Fragment } from "react";
-import { DataContext } from "@/components/data-context";
+import { DataContext } from "@/context/data-context";
 import getData from "../services/web-services";
 import Content from "@/components/layout/content";
-import LottiePlayer from "@/components/layout/lottie-player";
-import Footer from "@/components/layout/footer";
 import SEO from "@/components/seo";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import DialogForm from "@/components/layout/navbar/dialog-form";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);
@@ -38,25 +46,45 @@ export default function Classmates() {
       />
       {url.length == 0 ? (
         <>
-          <div className="fixed inset-0 flex flex-col justify-center items-center">
-            <LottiePlayer
-              src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
-              width="308px"
-            />
-            <h1 className="text-base text-center text-foreground -mt-4">
-              No photos found for <br />
-              <span className="font-semibold">classmates</span>
+          <div className="fixed left-[50%] top-[50%] z-50 grid justify-items-center text-center w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 px-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+              View Classmates&apos; Pics
             </h1>
+            <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
+              A simple app to display a list of classmates and alumni of Amikom
+              University Yogyakarta based on photos.
+            </p>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="mt-4 sm:mt-6 px-6 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
+                >
+                  Search
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader className="mb-4">
+                  <DialogTitle>Looking For Pics?</DialogTitle>
+                  <DialogDescription>
+                    Just fill in this form to commence!
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogForm />
+              </DialogContent>
+            </Dialog>
           </div>
-          <Footer className="fixed bottom-0 right-0 w-full z-10" />
         </>
       ) : (
-        <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center mt-20">
+        <section className="mt-24 space-y-8">
+          <div className="h-14 sm:h-28 flex justify-center items-center text-center">
+            <h1 className="capitalize text-lg">Your classmates</h1>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center">
             <Content data={url} />
           </div>
-          <Footer />
-        </>
+        </section>
       )}
     </Fragment>
   );
