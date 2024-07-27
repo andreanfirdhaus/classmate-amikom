@@ -10,11 +10,45 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { ImageNotFound } from "@/assets/assets";
+import { useEffect, useRef } from 'react';
+import { useErrorImageContext } from '@/context/error-context';
 
 function Content({ data }: { data: FormDataValues }) {
+    const { setUrls } = useErrorImageContext();
+    const prevDataRef = useRef<string[]>([]);
+
     const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
         e.currentTarget.src = ImageNotFound;
     };
+
+    useEffect(() => {
+        const prefetchImages = async () => {
+            const newErrorUrls: string[] = [];
+            const newValidUrls: string[] = [];
+
+            const promises = data.map(url => {
+                return new Promise<void>((resolve) => {
+                    const img = new Image();
+                    img.src = url;
+                    img.onload = () => {
+                        newValidUrls.push(url);
+                        resolve();
+                    };
+                    img.onerror = () => {
+                        newErrorUrls.push(url);
+                        resolve();
+                    };
+                });
+            });
+
+            await Promise.all(promises);
+
+            setUrls(newValidUrls, newErrorUrls);
+            prevDataRef.current = data;
+        };
+
+        prefetchImages();
+    }, [data, setUrls]);
 
     return (
         <>
