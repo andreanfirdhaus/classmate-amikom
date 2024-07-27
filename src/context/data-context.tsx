@@ -16,7 +16,7 @@ export const DataContext = createContext<({
 });
 
 export const DataProvider: React.FC = ({ children }: any) => {
-    const [formData, setFormData] = useState<FormDataValues>({});
+    const [formData, setFormData] = useState<FormDataValues>(null);
 
     return (
         <DataContext.Provider value={{ data: formData, setData: setFormData }}>
