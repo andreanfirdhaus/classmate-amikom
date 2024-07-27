@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { amikomLight, amikomDark, amikom } from "@/assets/assets";
+import { amikomLight, amikomDark } from "@/assets/assets";
 import SheetNavbar from '@/components/layout/navbar/sheet-navbar';
 import DialogForm from "@/components/layout/navbar/dialog-form";
 import {
@@ -16,15 +16,13 @@ import {
 
 export default function Navbar() {
   const { theme } = useTheme();
-  const [logo, setLogo] = useState(amikom);
+  const [logo, setLogo] = useState("");
 
   useEffect(() => {
     if (theme === "light") {
       setLogo(amikomDark);
-    } else if (theme === "dark") {
-      setLogo(amikomLight);
     } else {
-      setLogo(amikom);
+      setLogo(amikomLight);
     }
   }, [theme]);
 
@@ -51,20 +49,20 @@ export default function Navbar() {
                 <DialogTrigger asChild>
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="flex flex-row justify-between items-center font-normal w-full"
+                    size="lg"
+                    className="flex flex-row justify-between items-center font-normal w-full rounded-full px-4"
                   >
                     <p className="text-muted-foreground">looking for photos?</p>
-                    <kbd className="hidden sm:inline-flex pointer-events-none h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-                      <span className="text-xs">⌘</span>k
+                    <kbd className="hidden sm:inline-flex pointer-events-none h-6 select-none items-center gap-1 rounded-full border bg-muted px-2 font-mono text-[12px] font-medium text-muted-foreground opacity-100">
+                      <span className="text-sm">⌘</span>k
                     </kbd>
                   </Button>
                 </DialogTrigger>
                 <DialogContent>
-                  <DialogHeader className="mb-4">
-                    <DialogTitle>Looking for photos?</DialogTitle>
+                  <DialogHeader className="mb-2.5">
+                    <DialogTitle className='text-2xl'>Looking For Pics?</DialogTitle>
                     <DialogDescription>
-                      Just fill in this field to get started!
+                      Just fill in this form to commence!
                     </DialogDescription>
                   </DialogHeader>
                   <DialogForm />

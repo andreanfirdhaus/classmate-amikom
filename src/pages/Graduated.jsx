@@ -1,13 +1,14 @@
 import { useState, useEffect, useContext, Fragment } from "react";
-import { DataContext } from "@/components/data-context";
+import { DataContext } from "@/context/data-context";
 import getData from "../services/web-services";
 import Content from "@/components/layout/content";
 import LottiePlayer from "@/components/layout/lottie-player";
-import Footer from "@/components/layout/footer";
 import SEO from "@/components/seo";
+import { useErrorImageContext } from "@/context/error-context";
 
 export default function Graduated() {
   const { data } = useContext(DataContext);
+  const { errorUrls } = useErrorImageContext();
   const [url, setUrl] = useState([]);
 
   const fetchData = async () => {
@@ -48,15 +49,19 @@ export default function Graduated() {
               <span className="font-semibold">graduated</span>
             </h1>
           </div>
-          <Footer className="fixed bottom-0 right-0 w-full z-10" />
         </>
       ) : (
-        <>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center mt-20">
+        <section className="mt-24 space-y-8">
+          <div className="h-14 sm:h-28 flex justify-center items-center text-center">
+            <h1 className="capitalize text-lg">
+              Who have not graduated yet <br />{" "}
+              <strong>{errorUrls.length}</strong> from {url.length}
+            </h1>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center">
             <Content data={url} />
           </div>
-          <Footer />
-        </>
+        </section>
       )}
     </Fragment>
   );

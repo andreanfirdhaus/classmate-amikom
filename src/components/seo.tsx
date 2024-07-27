@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
@@ -9,7 +8,7 @@ interface SEOProps {
     domain: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, name, domain, type }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, name, domain }) => {
     return (
         <Helmet>
             <title>{title}</title>
@@ -21,7 +20,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, name, domain, type }) => 
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
-            <link rel="stylesheet" href={domain} />
+            <link rel="text/html" href={domain} />
         </Helmet>
     );
 }

@@ -17,16 +17,24 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState, useContext } from 'react';
-import { DataContext } from '@/components/data-context';
+import { useContext } from 'react';
+import { DataContext } from '@/context/data-context';
 
 const formSchema = z.object({
-    tahunAngkatan: z.string(),
-    programStudi: z.string(),
-    nimAwal: z.string().min(4, { message: "NIM Awal must have at least 4 digits." }).max(4, { message: "NIM Awal must be a maximum of 4 digits." }),
-    nimAkhir: z.string().min(4, { message: "NIM Akhir must have at least 4 digits." }).max(4, { message: "NIM Akhir must be a maximum of 4 digits." }),
+    tahunAngkatan: z.string({
+        required_error: "Academic Period ID  is required"
+    }),
+    programStudi: z.string({
+        required_error: "Academic Program ID  is required"
+    }),
+    nimAwal: z.string({
+        required_error: "First Student ID  is required"
+    }).min(4, { message: "First Student ID must have at least 4 digits." }).max(4, { message: "First Student ID must be a maximum of 4 digits." }),
+    nimAkhir: z.string({
+        required_error: "Last Student ID is required"
+    }).min(4, { message: "Last Student ID must have at least 4 digits." }).max(4, { message: "Last Student ID must be a maximum of 4 digits." }),
 });
 
 type formSchemaValues = z.infer<typeof formSchema>
@@ -43,18 +51,18 @@ export default function DialogForm() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pb-2">
                 {/* tahun angkatan */}
                 <FormField
                     control={form.control}
                     name="tahunAngkatan"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Tahun Angkatan</FormLabel>
+                            <FormLabel >Academic Period</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                                 <FormControl>
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Year" />
+                                        <SelectValue placeholder="2019" />
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
@@ -77,14 +85,14 @@ export default function DialogForm() {
                     name="programStudi"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Program Studi</FormLabel>
+                            <FormLabel>Academic Program</FormLabel>
                             <FormControl>
                                 <Select
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
                                 >
                                     <SelectTrigger>
-                                        <SelectValue placeholder="Prodi" />
+                                        <SelectValue placeholder="Informatika" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="11">Informatika</SelectItem>
@@ -108,9 +116,9 @@ export default function DialogForm() {
                     name="nimAwal"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>NIM Awal</FormLabel>
+                            <FormLabel>First Student ID</FormLabel>
                             <FormControl>
-                                <Input placeholder="xxxx" type="number" {...field} />
+                                <Input placeholder="3119" type="number" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -122,16 +130,16 @@ export default function DialogForm() {
                     name="nimAkhir"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>NIM Akhir</FormLabel>
+                            <FormLabel>Last Student ID</FormLabel>
                             <FormControl>
-                                <Input placeholder="xxxx" type="number" {...field} />
+                                <Input placeholder="3182" type="number" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 {/* button submit */}
-                <Button type="submit" className="w-full">
+                <Button type="submit" size='lg' variant='default' className="w-full rounded-full">
                     Check
                 </Button>
             </form>
