@@ -27,7 +27,8 @@ export default function Navbar() {
   }, [theme]);
 
   return (
-    <header>
+
+    <header className='hidden sm:block'>
       <nav className="fixed top-0 left-0 w-full z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 max-w-[56rem]">
           <div className="flex flex-row justify-normal sm:justify-between items-center w-full py-3.5 sm:py-4">
