@@ -35,15 +35,23 @@ export default function Footer({ className }: FooterProps) {
 
     return (
         <footer className={cn("fixed left-0 right-0 bottom-3.5 z-50 block sm:hidden", className)}>
-            <div className="flex justify-center items-center gap-2 h-16 mx-auto w-[256px] bg-primary rounded-full">
-                <div className='flex justify-center items-center space-x-3'>
-                    <NavLink to="/" className="size-12 flex items-center justify-center rounded-full">
+            <div className="flex justify-center items-center gap-2 h-16 mx-auto w-[238px] bg-primary rounded-full">
+                <div className='flex justify-center items-center gap-2'>
+                    <NavLink to="/"
+                        className={({ isActive }) =>
+                            isActive ? "size-12 bg-testprimary flex items-center justify-center rounded-full" : "size-12 flex items-center justify-center rounded-full"
+                        }
+                    >
                         <Suit fill={myColor} stroke={myColor} />
                     </NavLink>
-                    <NavLink to="/graduated" className="size-12 flex items-center justify-center rounded-full">
+                    <NavLink to="/graduated"
+                        className={({ isActive }) =>
+                            isActive ? "size-12 bg-testprimary flex items-center justify-center rounded-full" : "size-12 flex items-center justify-center rounded-full"
+                        }
+                    >
                         <Toga fill={myColor} />
                     </NavLink>
-                    <div className="text-black size-12 flex items-center justify-center rounded-full" onClick={toggleTheme}>
+                    <div className="size-12 flex items-center justify-center rounded-full" onClick={toggleTheme}>
                         {currentTheme === 'light' ? (
                             <Sun fill={myColor} className="transition-all" />
                         ) : (
@@ -51,7 +59,7 @@ export default function Footer({ className }: FooterProps) {
                         )}
                         <span className="sr-only">Toggle theme</span>
                     </div>
-                    <div className="text-black  size-12 flex items-center justify-center rounded-full">
+                    <div className=" size-12 flex items-center justify-center rounded-full">
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Search fill={myColor} />
