@@ -51,10 +51,10 @@ export default function Graduated() {
           </div>
         </>
       ) : (
-        <section className="mt-24 space-y-8">
+        <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">
           <div className="h-14 sm:h-28 flex justify-center items-center text-center">
             <h1 className="capitalize text-lg">
-              Who have not graduated yet <br />{" "}
+              Who have not graduated yet <br />
               <strong>{errorUrls.length}</strong> from {url.length}
             </h1>
           </div>

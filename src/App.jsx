@@ -17,7 +17,7 @@ function App() {
             <main className="container mx-auto px-4 max-w-[48.5rem]">
               <Outlet />
             </main>
-            {/* <Footer /> */}
+            <Footer />
           </HelmetProvider>
         </ErrorImageProvider>
       </DataProvider>
