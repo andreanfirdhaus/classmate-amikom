@@ -45,39 +45,37 @@ export default function Classmates() {
         domain="https://classmate-amikom.vercel.app/"
       />
       {url.length == 0 ? (
-        <>
-          <div className="fixed left-[50%] top-[50%] z-50 grid justify-items-center text-center w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 px-4">
-            <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
-              View Classmates&apos; Pics
-            </h1>
-            <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
-              A simple app to display a list of classmates and alumni of Amikom
-              University Yogyakarta based on photos.
-            </p>
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button
-                  variant="default"
-                  size="lg"
-                  className="mt-4 sm:mt-6 px-6 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
-                >
-                  Search
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader className="mb-4">
-                  <DialogTitle>Looking For Pics?</DialogTitle>
-                  <DialogDescription>
-                    Just fill in this form to commence!
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogForm />
-              </DialogContent>
-            </Dialog>
-          </div>
-        </>
+        <div className="fixed left-[50%] top-[50%] z-50 grid justify-items-center text-center w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 px-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+            View Classmates&apos; Pics
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
+            A simple app to display a list of classmates and alumni of Amikom
+            University Yogyakarta based on photos.
+          </p>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant="default"
+                size="lg"
+                className="mt-4 sm:mt-6 px-5 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
+              >
+                Search
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader className="mb-4">
+                <DialogTitle>Looking For Pics?</DialogTitle>
+                <DialogDescription>
+                  Just fill in this form to commence!
+                </DialogDescription>
+              </DialogHeader>
+              <DialogForm />
+            </DialogContent>
+          </Dialog>
+        </div>
       ) : (
-        <section className="mt-24 space-y-8">
+        <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">
           <div className="h-14 sm:h-28 flex justify-center items-center text-center">
             <h1 className="capitalize text-lg">Your classmates</h1>
           </div>
