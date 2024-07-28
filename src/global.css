@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --test-primary: 240 4% 16%; /*#27272a*/
+
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
@@ -36,6 +38,8 @@
   }
 
   .dark {
+    --test-primary: 240 6% 90%; /*#e4e4e7*/
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
