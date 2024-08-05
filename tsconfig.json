@@ -9,6 +9,8 @@
         "./src/*"
       ]
     },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     // ...
   },
