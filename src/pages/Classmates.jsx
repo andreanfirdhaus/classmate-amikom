@@ -19,6 +19,8 @@ export default function Classmates() {
   const [url, setUrl] = useState([]);
 
   const fetchData = async () => {
+    if (!data) return;
+
     const newUrl = [];
     for (let i = data.nimAwal; i <= data.nimAkhir; i++) {
       const url = getData(
@@ -33,7 +35,9 @@ export default function Classmates() {
   };
 
   useEffect(() => {
-    fetchData();
+    if (data) {
+      fetchData();
+    }
   }, [data]);
 
   return (
