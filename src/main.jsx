@@ -1,29 +1,22 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
-import "./global.css";
-import Classmates from "./pages/Classmates.jsx";
-import Graduated from "./pages/Graduated.jsx";
-import PageNotFound from "@/components/layout/error-client.tsx";
+import { ThemeProvider } from "@/components/theme-provider";
+import { HelmetProvider } from "react-helmet-async";
+import { DataProvider } from "@/context/data-context";
+import { ErrorImageProvider } from "@/context/error-context";
+import { routes } from "./routes";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <PageNotFound />,
-    children: [
-      {
-        path: "/",
-        element: <Classmates />,
-      },
-      {
-        path: "/graduated",
-        element: <Graduated />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(routes);
+const helmetContext = {};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />,
+  <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+    <DataProvider>
+      <ErrorImageProvider>
+        <HelmetProvider context={helmetContext}>
+          <RouterProvider router={router} />
+        </HelmetProvider>
+      </ErrorImageProvider>
+    </DataProvider>
+  </ThemeProvider>,
 );
