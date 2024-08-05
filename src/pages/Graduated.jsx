@@ -12,6 +12,8 @@ export default function Graduated() {
   const [url, setUrl] = useState([]);
 
   const fetchData = async () => {
+    if (!data) return;
+
     const newUrl = [];
     for (let i = data.nimAwal; i <= data.nimAkhir; i++) {
       const url = getData(
@@ -26,7 +28,9 @@ export default function Graduated() {
   };
 
   useEffect(() => {
-    fetchData();
+    if (data) {
+      fetchData();
+    }
   }, [data]);
 
   return (
