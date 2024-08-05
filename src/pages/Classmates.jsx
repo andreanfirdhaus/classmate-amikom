@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, Fragment } from "react";
 import { DataContext } from "@/context/data-context";
 import getData from "../services/web-services";
-import Content from "@/components/layout/content";
+import Content from "@/layout/content";
 import SEO from "@/components/seo";
 import {
   Dialog,
@@ -12,7 +12,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import DialogForm from "@/components/layout/navbar/dialog-form";
+import DialogForm from "@/layout/navbar/dialog-form";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);

@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext, Fragment } from "react";
 import { DataContext } from "@/context/data-context";
 import getData from "../services/web-services";
-import Content from "@/components/layout/content";
-import LottiePlayer from "@/components/layout/lottie-player";
+import Content from "@/layout/content";
+import LottiePlayer from "@/components/lottie-player";
 import SEO from "@/components/seo";
 import { useErrorImageContext } from "@/context/error-context";
 

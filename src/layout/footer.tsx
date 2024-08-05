@@ -10,7 +10,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import DialogForm from "@/components/layout/navbar/dialog-form";
+import DialogForm from "@/layout/navbar/dialog-form";
 import { Suit, Toga, Sun, Moon, Search } from '@/assets/assets';
 
 interface FooterProps {

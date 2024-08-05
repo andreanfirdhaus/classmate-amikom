@@ -1,7 +1,7 @@
-import Layout from './components/layout/layout.js';
+import Layout from "@/layout/layout"
 import Classmates from "./pages/Classmates.jsx";
 import Graduated from "./pages/Graduated.jsx";
-import PageNotFound from "@/components/layout/error-client";
+import PageNotFound from "@/layout/error-client";
 import "./global.css";
 
 export const routes = [
