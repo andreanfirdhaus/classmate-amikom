@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, ReactNode, useState } from 'react';
 
 interface FormDataValues {
     tahunAngkatan: string;
@@ -7,16 +7,22 @@ interface FormDataValues {
     nimAkhir: string;
 }
 
-export const DataContext = createContext<({
-    data: FormDataValues;
-    setData: React.Dispatch<React.SetStateAction<FormDataValues>>;
-})>({
-    data: {} as FormDataValues,
+interface DataContextType {
+    data: FormDataValues | null;
+    setData: React.Dispatch<React.SetStateAction<FormDataValues | null>>;
+}
+
+export const DataContext = createContext<DataContextType>({
+    data: null,
     setData: () => { },
 });
 
-export const DataProvider: React.FC = ({ children }: any) => {
-    const [formData, setFormData] = useState<FormDataValues>(null);
+interface DataProviderProps {
+    children: ReactNode;
+}
+
+export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
+    const [formData, setFormData] = useState<FormDataValues | null>(null);
 
     return (
         <DataContext.Provider value={{ data: formData, setData: setFormData }}>
@@ -24,5 +30,3 @@ export const DataProvider: React.FC = ({ children }: any) => {
         </DataContext.Provider>
     );
 };
-
-
