@@ -1,18 +1,10 @@
-import { useState, useEffect, useContext, Fragment } from "react";
-import { DataContext } from "@/context/data-context";
-import getData from "../services/web-services";
-import Content from "@/layout/content";
+import FormDialog from "@/components/partial/form-dialog";
 import SEO from "@/components/seo";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import DialogForm from "@/layout/navbar/dialog-form";
+import { DataContext } from "@/context/data-context";
+import Content from "@/layout/content";
+import { Fragment, useContext, useEffect, useState } from "react";
+import getData from "../services/web-services";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);
@@ -57,27 +49,15 @@ export default function Classmates() {
             A simple app to display a list of classmates and alumni of Amikom
             University Yogyakarta based on photos.
           </p>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button
-                variant="default"
-                size="lg"
-                className="mt-4 sm:mt-6 px-5 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
-              >
-                Search
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader className="mb-4">
-                <DialogTitle>Looking For Pics?</DialogTitle>
-                <DialogDescription>
-                  Fill in the form below to find your classmates and alumni
-                  photos.
-                </DialogDescription>
-              </DialogHeader>
-              <DialogForm />
-            </DialogContent>
-          </Dialog>
+          <FormDialog>
+            <Button
+              variant="default"
+              size="lg"
+              className="mt-4 sm:mt-6 px-5 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
+            >
+              Search
+            </Button>
+          </FormDialog>
         </div>
       ) : (
         <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">

@@ -1,18 +1,10 @@
-import { useState, useEffect } from "react";
+import { amikomDark, amikomLight } from "@/assets/assets";
 import { ModeToggle } from "@/components/mode-toggle";
+import FormDialog from "@/components/partial/form-dialog";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import { amikomLight, amikomDark } from "@/assets/assets";
 import SheetNavbar from "@/layout/navbar/sheet-navbar";
-import DialogForm from "@/layout/navbar/dialog-form";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const { theme } = useTheme();
@@ -43,32 +35,18 @@ export default function Navbar() {
             </div>
 
             <div className="flex basis-full sm:basis-2/4 items-center gap-2">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="flex flex-row justify-between items-center font-normal w-full rounded-full px-4"
-                  >
-                    <p className="text-muted-foreground">looking for photos?</p>
-                    <kbd className="hidden sm:inline-flex pointer-events-none h-6 select-none items-center gap-1 rounded-full border bg-muted px-2 font-mono text-[12px] font-medium text-muted-foreground opacity-100">
-                      <span className="text-sm">⌘</span> + K
-                    </kbd>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader className="mb-2.5">
-                    <DialogTitle className="text-2xl">
-                      Looking For Pics?
-                    </DialogTitle>
-                    <DialogDescription>
-                      Fill in the form below to find your classmates and alumni
-                      photos.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <DialogForm />
-                </DialogContent>
-              </Dialog>
+              <FormDialog>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex flex-row justify-between items-center font-normal w-full rounded-full px-4"
+                >
+                  <p className="text-muted-foreground">looking for photos?</p>
+                  <kbd className="hidden sm:inline-flex pointer-events-none h-6 select-none items-center gap-1 rounded-full border bg-muted px-2 font-mono text-[12px] font-medium text-muted-foreground opacity-100">
+                    <span className="text-sm">⌘</span>k
+                  </kbd>
+                </Button>
+              </FormDialog>
               <div className="flex">
                 <ModeToggle />
                 <SheetNavbar />

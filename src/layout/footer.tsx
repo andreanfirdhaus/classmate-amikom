@@ -1,17 +1,9 @@
-import { cn } from "@/lib/utils";
-import { NavLink } from "react-router-dom";
+import { Moon, Search, Suit, Sun, Toga } from "@/assets/assets";
+import FormDialog from "@/components/partial/form-dialog";
 import { useTheme } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import DialogForm from "@/layout/navbar/dialog-form";
-import { Suit, Toga, Sun, Moon, Search } from "@/assets/assets";
+import { NavLink } from "react-router-dom";
 
 interface FooterProps {
   className?: string;
@@ -74,21 +66,9 @@ export default function Footer({ className }: FooterProps) {
             <span className="sr-only">Toggle theme</span>
           </div>
           <div className=" size-12 flex items-center justify-center rounded-full">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Search fill={myColor} />
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader className="mb-4">
-                  <DialogTitle>Looking For Pics?</DialogTitle>
-                  <DialogDescription>
-                    Fill in the form below to find your classmates and alumni
-                    photos.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogForm />
-              </DialogContent>
-            </Dialog>
+            <FormDialog>
+              <Search fill={myColor} />
+            </FormDialog>
           </div>
         </div>
       </div>
