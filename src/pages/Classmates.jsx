@@ -43,7 +43,7 @@ export default function Classmates() {
       {url.length == 0 ? (
         <div className="fixed left-[50%] top-[50%] z-50 grid justify-items-center text-center w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 px-4">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
-            View Classmates&apos; Pics
+            Classmates
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
             A simple app to display a list of classmates and alumni of Amikom
