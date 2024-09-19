@@ -1,4 +1,4 @@
-import { Moon, Search, Suit, Sun, Toga } from "@/assets/assets";
+import { Moon, Search, Suit, Sun, Toga } from "@/assets/icons";
 import FormDialog from "@/components/partial/form-dialog";
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";

@@ -1,4 +1,4 @@
-import { amikomDark, amikomLight } from "@/assets/assets";
+import { amikomDark, amikomLight } from "../../assets/assets";
 import { ModeToggle } from "@/components/mode-toggle";
 import FormDialog from "@/components/partial/form-dialog";
 import { useTheme } from "@/components/theme-provider";
