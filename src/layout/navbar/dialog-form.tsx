@@ -66,7 +66,7 @@ export default function DialogForm() {
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                    {[2018, 2019, 2020, 2021, 2022, 2023].map((year) => {
+                                    {[2018, 2019, 2020, 2021, 2022, 2023, 2024].map((year) => {
                                         return (
                                             <SelectItem value={year.toString()} key={year}>
                                                 {year}
