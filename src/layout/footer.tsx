@@ -32,14 +32,14 @@ export default function Footer({ className }: FooterProps) {
         className,
       )}
     >
-      <div className="flex justify-center items-center gap-2 h-16 mx-auto w-[238px] bg-primary rounded-full">
-        <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center h-16 mx-auto w-[228px] bg-primary rounded-full">
+        <div className="flex justify-center items-center gap-[6px]">
           <NavLink
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "size-12 bg-testprimary flex items-center justify-center rounded-full"
-                : "size-12 flex items-center justify-center rounded-full"
+                ? "size-12 bg-testprimary flex items-center justify-center rounded-full transition-transform duration-300 transform scale-110"
+                : "size-12 flex items-center justify-center rounded-full transition-transform duration-300 transform"
             }
           >
             <Suit fill={myColor} stroke={myColor} />
@@ -48,8 +48,8 @@ export default function Footer({ className }: FooterProps) {
             to="/graduated"
             className={({ isActive }) =>
               isActive
-                ? "size-12 bg-testprimary flex items-center justify-center rounded-full"
-                : "size-12 flex items-center justify-center rounded-full"
+                ? "size-12 bg-testprimary flex items-center justify-center rounded-full transition-transform duration-300 transform scale-110"
+                : "size-12 flex items-center justify-center rounded-full transition-transform duration-300 transform"
             }
           >
             <Toga fill={myColor} />
@@ -65,7 +65,7 @@ export default function Footer({ className }: FooterProps) {
             )}
             <span className="sr-only">Toggle theme</span>
           </div>
-          <div className=" size-12 flex items-center justify-center rounded-full">
+          <div className="size-12 flex items-center justify-center rounded-full">
             <FormDialog>
               <Search fill={myColor} />
             </FormDialog>
