@@ -1,10 +1,11 @@
-import { useState, useEffect, useContext, Fragment } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { DataContext } from "@/context/data-context";
-import getData from "../services/web-services";
-import Content from "@/layout/content";
-import LottiePlayer from "@/components/lottie-player";
+import getData from "@/services/web-services";
 import SEO from "@/components/seo";
+import Content from "@/layout/content";
 import { useErrorImageContext } from "@/context/error-context";
+import { GraduatedVector } from "@/assets/vector";
+import Hero from "@/layout/hero";
 
 export default function Graduated() {
   const { data } = useContext(DataContext);
@@ -42,18 +43,12 @@ export default function Graduated() {
         domain="https://classmate-amikom.vercel.app/graduated"
       />
       {url.length == 0 ? (
-        <>
-          <div className="fixed inset-0 flex flex-col justify-center items-center">
-            <LottiePlayer
-              src={"https://assets5.lottiefiles.com/packages/lf20_rc6CDU.json"}
-              width="308px"
-            />
-            <h1 className="text-base text-center text-muted-foreground -mt-4">
-              No photos found for <br />
-              <span className="font-semibold">graduated</span>
-            </h1>
-          </div>
-        </>
+        <Hero
+          vectorComponent={<GraduatedVector />}
+          title="Graduated"
+          desc=" Your classmates who have passed the Undergraduate Thesis
+              Examination"
+        />
       ) : (
         <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">
           <div className="h-14 sm:h-28 flex justify-center items-center text-center">

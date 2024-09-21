@@ -1,14 +1,17 @@
-import FormDialog from "@/components/partial/form-dialog";
-import SEO from "@/components/seo";
-import { Button } from "@/components/ui/button";
-import { DataContext } from "@/context/data-context";
-import Content from "@/layout/content";
 import { Fragment, useContext, useEffect, useState } from "react";
-import getData from "../services/web-services";
+import { DataContext } from "@/context/data-context";
+import getData from "@/services/web-services";
+import SEO from "@/components/seo";
+import Content from "@/layout/content";
+import { ClassmatesVector } from "@/assets/vector";
+import { useTheme } from "@/components/theme-provider";
+import Hero from "@/layout/hero";
 
 export default function Classmates() {
   const { data } = useContext(DataContext);
   const [url, setUrl] = useState([]);
+  const { theme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState(theme);
 
   const fetchData = async () => {
     if (!data) return;
@@ -30,7 +33,11 @@ export default function Classmates() {
     if (data) {
       fetchData();
     }
-  }, [data]);
+    setCurrentTheme(theme);
+  }, [data, theme]);
+
+  const myColor = currentTheme === "light" ? "#09090b" : "#fafafa";
+  const myColor1 = currentTheme === "light" ? "#fafafa" : "#09090b";
 
   return (
     <Fragment>
@@ -41,24 +48,13 @@ export default function Classmates() {
         domain="https://classmate-amikom.vercel.app/"
       />
       {url.length == 0 ? (
-        <div className="fixed left-[50%] top-[50%] z-50 grid justify-items-center text-center w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 px-4">
-          <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Classmates
-          </h1>
-          <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
-            A simple app to display a list of classmates and alumni of Amikom
-            University Yogyakarta based on photos.
-          </p>
-          <FormDialog>
-            <Button
-              variant="default"
-              size="lg"
-              className="mt-4 sm:mt-6 px-5 py-6 capitalize text-base font-normal sm:text-lg rounded-full"
-            >
-              Search
-            </Button>
-          </FormDialog>
-        </div>
+        <Hero
+          vectorComponent={
+            <ClassmatesVector outsideColor={myColor} ringColor={myColor1} />
+          }
+          title="Classmates"
+          desc="A simple application to display Amikom University Yogyakarta  classmates and alumni through photos."
+        />
       ) : (
         <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">
           <div className="h-14 sm:h-28 flex justify-center items-center text-center">
