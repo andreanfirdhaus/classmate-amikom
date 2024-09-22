@@ -1,9 +1,9 @@
 import { GraduatedVector } from "@/assets/vector";
-import SEO from "@/components/seo";
 import { DataContext } from "@/context/data-context";
 import { useErrorImageContext } from "@/context/error-context";
 import Content from "@/layout/content";
 import Hero from "@/layout/hero";
+import MetaData from "@/layout/meta-data";
 import { Fragment, useContext } from "react";
 import { useGetUrls } from "../services/web-services";
 
@@ -16,7 +16,7 @@ export default function Graduated() {
 
   return (
     <Fragment>
-      <SEO
+      <MetaData
         title="Who's Graduated"
         description="View Your Classmate Who's Graduated"
         name="Classmate Amikom"

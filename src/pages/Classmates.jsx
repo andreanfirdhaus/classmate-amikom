@@ -1,9 +1,9 @@
 import { ClassmatesVector } from "@/assets/vector";
-import SEO from "@/components/seo";
 import { useTheme } from "@/components/theme-provider";
 import { DataContext } from "@/context/data-context";
 import Content from "@/layout/content";
 import Hero from "@/layout/hero";
+import MetaData from "@/layout/meta-data";
 import { Fragment, useContext } from "react";
 import { useGetUrls } from "../services/web-services";
 
@@ -20,7 +20,7 @@ export default function Classmates() {
 
   return (
     <Fragment>
-      <SEO
+      <MetaData
         title="Classmate"
         description="A simple application to display a list of classmates and alumni of Amikom University Yogyakarta based on photos."
         name="Classmate Amikom"
