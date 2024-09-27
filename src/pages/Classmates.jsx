@@ -16,7 +16,7 @@ export default function Classmates() {
   const myColor = currentTheme === "light" ? "#09090b" : "#fafafa";
   const myColor1 = currentTheme === "light" ? "#fafafa" : "#09090b";
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <></>;
 
   return (
     <Fragment>
@@ -32,12 +32,17 @@ export default function Classmates() {
             <ClassmatesVector outsideColor={myColor} ringColor={myColor1} />
           }
           title="Classmates"
-          desc="A simple application to display Amikom University Yogyakarta classmates and alumni through photos."
+          desc="Simple app to display Amikom University Yogyakarta classmates and alums through photos."
         />
       ) : (
         <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">
-          <div className="h-14 sm:h-28 flex justify-center items-center text-center">
-            <h1 className="capitalize text-lg">Your classmates</h1>
+          <div className="h-14 sm:h-28 flex flex-col justify-center items-center text-center">
+            <h1 className="text-2xl font-bold text-foreground capitalize">
+              classmates
+            </h1>
+            <p className="text-base text-muted-foreground mt-1.5">
+              these are your classmates{"`"} faces
+            </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center">
             <Content data={urls} />
