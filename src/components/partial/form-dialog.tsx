@@ -1,4 +1,4 @@
-import DialogForm from "@/layout/navbar/dialog-form";
+import DialogForm from "@/components/dialog-form";
 import {
   Dialog,
   DialogContent,
@@ -7,14 +7,21 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
+import { useState } from 'react';
 
 export default function FormDialog({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent>
         <DialogHeader className="mb-2.5">
@@ -23,7 +30,7 @@ export default function FormDialog({
             Just fill in this form to commence!
           </DialogDescription>
         </DialogHeader>
-        <DialogForm />
+        <DialogForm onSubmitClose={handleClose} />
       </DialogContent>
     </Dialog>
   );
