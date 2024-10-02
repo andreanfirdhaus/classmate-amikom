@@ -39,7 +39,7 @@ const formSchema = z.object({
 
 type formSchemaValues = z.infer<typeof formSchema>
 
-export default function DialogForm() {
+export default function DialogForm({ onSubmitClose }: { onSubmitClose: () => void }) {
     const { setData } = useContext(DataContext);
     const form = useForm<formSchemaValues>({
         resolver: zodResolver(formSchema),
@@ -47,6 +47,7 @@ export default function DialogForm() {
 
     function onSubmit(data: formSchemaValues) {
         setData(data);
+        onSubmitClose();
     }
 
     return (
@@ -95,14 +96,14 @@ export default function DialogForm() {
                                         <SelectValue placeholder="Informatika" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectItem value="11">Informatika</SelectItem>
-                                        <SelectItem value="12">Sistem Informasi</SelectItem>
-                                        <SelectItem value="95">Hubungan Internasional</SelectItem>
-                                        <SelectItem value="67">
-                                            Ilmu Komunikasi Internasional
-                                        </SelectItem>
-                                        <SelectItem value="82">Teknologi Informasi</SelectItem>
-                                        <SelectItem value="96">Ilmu Komunikasi</SelectItem>
+                                        <SelectItem value="84">Arsitektur</SelectItem> {/* pass */}
+                                        <SelectItem value="21">BCIT</SelectItem> {/* pass */}
+                                        <SelectItem value="95">Hubungan Internasional</SelectItem> {/* pass */}
+                                        <SelectItem value="96">Ilmu Komunikasi</SelectItem> {/* pass */}
+                                        <SelectItem value="94">Ilmu Pemerintahan</SelectItem> {/* pass */}
+                                        <SelectItem value="11">Informatika</SelectItem> {/* pass */}
+                                        <SelectItem value="12">Sistem Informasi</SelectItem> {/* pass */}
+                                        <SelectItem value="82">Teknologi Informasi</SelectItem> {/* pass */}
                                     </SelectContent>
                                 </Select>
                             </FormControl>

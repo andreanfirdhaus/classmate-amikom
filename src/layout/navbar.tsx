@@ -1,9 +1,9 @@
-import { amikomDark, amikomLight } from "../../assets/assets";
+import { amikomDark, amikomLight } from "../assets/assets";
 import { ModeToggle } from "@/components/mode-toggle";
 import FormDialog from "@/components/partial/form-dialog";
 import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
-import SheetNavbar from "@/layout/navbar/sheet-navbar";
+import SheetNavbar from "@/components/sheet-navbar";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
