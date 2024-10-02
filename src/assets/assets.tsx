@@ -1,12 +1,10 @@
-import amikomLight from "./amikom-light.png";
-import amikomDark from "./amikom-dark.png";
-import ImageNotFound from "./404.png";
+import amikomLight from "./image/amikom-light.png";
+import amikomDark from "./image/amikom-dark.png";
 
 const assets = {
   amikomLight,
   amikomDark,
-  ImageNotFound,
 };
 
-export { amikomLight, amikomDark, ImageNotFound };
+export { amikomLight, amikomDark };
 export default { assets };
