@@ -21,17 +21,15 @@ export default function Hero({ vectorComponent, title, desc }: HeroProps) {
                     <p className="text-base sm:text-lg text-muted-foreground px-4 sm:px-0">
                         {desc}
                     </p>
-                    <div>
-                        <FormDialog>
-                            <Button
-                                variant="default"
-                                size="lg"
-                                className="mt-4 px-[18px] capitalize text-base font-normal sm:text-lg rounded-full"
-                            >
-                                Search
-                            </Button>
-                        </FormDialog>
-                    </div>
+                    <FormDialog>
+                        <Button
+                            variant="default"
+                            size="lg"
+                            className="mt-4 px-[18px] capitalize text-base font-normal sm:text-lg rounded-full"
+                        >
+                            Search
+                        </Button>
+                    </FormDialog>
                 </div>
             </div>
         </>
