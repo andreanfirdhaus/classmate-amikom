@@ -41,7 +41,7 @@ export default function Classmates() {
               classmates
             </h1>
             <p className="text-base text-muted-foreground mt-1.5">
-              these are your classmates{"`"} faces
+              these are your classmates{"`"}
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 content-center">
