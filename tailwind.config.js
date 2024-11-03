@@ -26,6 +26,12 @@ module.exports = {
         testprimary: {
           DEFAULT: "hsl(var(--test-primary))",
         },
+        activefooter: {
+          DEFAULT: "hsl(var(--bg-active-footer))",
+        },
+        footer: {
+          DEFAULT: "hsl(var(--bg-for-footer))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

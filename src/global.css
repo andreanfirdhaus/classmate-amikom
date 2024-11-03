@@ -4,7 +4,11 @@
 
 @layer base {
   :root {
+    /*default custom color*/
+    --bg-active-footer: 0 0% 96%; /*#F6F6F6*/
+    --bg-for-footer: 0 0% 100%; /*#FFFFFF*/
     --test-primary: 240 4% 16%; /*#27272a*/
+    /*custom color*/
 
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -38,7 +42,11 @@
   }
 
   .dark {
+    /*dark custom color*/
+    --bg-for-footer: 240 10% 4%; /*#09090B*/
+    --bg-active-footer: 240 4% 16%; /*#27272A*/
     --test-primary: 240 6% 90%; /*#e4e4e7*/
+    /*custom color*/
 
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
