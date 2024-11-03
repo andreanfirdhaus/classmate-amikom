@@ -23,51 +23,49 @@ export default function Footer({ className }: FooterProps) {
     setCurrentTheme(newTheme);
   };
 
-  const myColor = currentTheme === "light" ? "#fafafa" : "#09090b";
+  const fillColor = currentTheme === "light" ? "#27272A" : "#fafafa";
 
   return (
     <footer
       className={cn(
-        "fixed left-0 right-0 bottom-3.5 z-50 block sm:hidden",
+        "fixed left-0 right-0 bottom-[18px] z-50 block sm:hidden",
         className,
       )}
     >
-      <div className="flex justify-center items-center h-16 mx-auto w-[228px] bg-primary rounded-full">
-        <div className="flex justify-center items-center gap-[6px]">
+      <div className="flex justify-center items-center h-[56px] mx-auto w-[184px] bg-footer border border-input rounded-full shadow-2xl">
+        <div className="flex justify-center items-center gap-[2px]">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive
-                ? "size-12 bg-testprimary flex items-center justify-center rounded-full transition-transform duration-300 transform scale-110"
-                : "size-12 flex items-center justify-center rounded-full transition-transform duration-300 transform"
+              `size-[40px] flex items-center justify-center rounded-full transition ease-in-out ${isActive ? `transition-transform duration-300 transform scale-105 bg-activefooter` : ""
+              }`
             }
           >
-            <Suit fill={myColor} stroke={myColor} />
+            <Suit fill={fillColor} stroke={fillColor} />
           </NavLink>
           <NavLink
             to="/graduated"
             className={({ isActive }) =>
-              isActive
-                ? "size-12 bg-testprimary flex items-center justify-center rounded-full transition-transform duration-300 transform scale-110"
-                : "size-12 flex items-center justify-center rounded-full transition-transform duration-300 transform"
+              `size-[40px] flex items-center justify-center rounded-full transition ease-in-out ${isActive ? `transition-transform duration-300 transform scale-105 bg-activefooter` : ""
+              }`
             }
           >
-            <Toga fill={myColor} />
+            <Toga fill={fillColor} />
           </NavLink>
           <div
-            className="size-12 flex items-center justify-center rounded-full"
+            className="size-[40px] flex items-center justify-center rounded-full"
             onClick={toggleTheme}
           >
             {currentTheme === "light" ? (
-              <Sun fill={myColor} className="transition-all" />
+              <Sun fill={fillColor} className="transition-all" />
             ) : (
-              <Moon fill={myColor} className="transition-all" />
+              <Moon fill={fillColor} className="transition-all" />
             )}
             <span className="sr-only">Toggle theme</span>
           </div>
-          <div className="size-12 flex items-center justify-center rounded-full">
+          <div className="size-[40px] flex items-center justify-center rounded-full">
             <FormDialog>
-              <Search fill={myColor} />
+              <Search fill={fillColor} />
             </FormDialog>
           </div>
         </div>
