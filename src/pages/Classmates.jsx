@@ -13,8 +13,8 @@ export default function Classmates() {
   const { theme } = useTheme();
   const currentTheme = theme;
 
-  const myColor = currentTheme === "light" ? "#09090b" : "#fafafa";
-  const myColor1 = currentTheme === "light" ? "#fafafa" : "#09090b";
+  const outsideColor = currentTheme === "light" ? "#09090b" : "#fafafa";
+  const ringColor = currentTheme === "light" ? "#fafafa" : "#09090b";
 
   if (loading) return <></>;
 
@@ -29,10 +29,13 @@ export default function Classmates() {
       {urls.length === 0 ? (
         <Hero
           vectorComponent={
-            <ClassmatesVector outsideColor={myColor} ringColor={myColor1} />
+            <ClassmatesVector
+              outsideColor={outsideColor}
+              ringColor={ringColor}
+            />
           }
           title="Classmates"
-          desc="Simple app to display Amikom University Yogyakarta classmates and alums through photos."
+          desc="Simple app to display Amikom University Yogyakarta classmates and alums photos."
         />
       ) : (
         <section className="mt-8 sm:mt-24 mb-24 sm:mb-12 space-y-8">

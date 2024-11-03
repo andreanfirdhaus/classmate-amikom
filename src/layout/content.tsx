@@ -113,8 +113,8 @@ function Content({ data }) {
                                 onError={handleImageError}
                             />
                         </CardHeader>
-                        <CardContent>
-                            <CardTitle>{splitData}</CardTitle>
+                        <CardContent className='py-2.5'>
+                            <CardTitle className='text-sm'>{splitData}</CardTitle>
                         </CardContent>
                     </Card>
                 );
