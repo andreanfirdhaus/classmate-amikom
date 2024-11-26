@@ -15,6 +15,7 @@ export default function Classmates() {
 
   const fill = currentTheme === "light" ? "#fafafa" : "#09090B";
   const outside = currentTheme === "light" ? "#09090b" : "#fafafa";
+  const frame = currentTheme === "light" ? "#09090b" : "";
 
   if (loading) return <></>;
 
@@ -28,7 +29,9 @@ export default function Classmates() {
       />
       {urls.length === 0 ? (
         <Hero
-          vectorComponent={<ClassmatesVector fill={fill} outside={outside} />}
+          vectorComponent={
+            <ClassmatesVector fill={fill} outside={outside} frame={frame} />
+          }
           title="Classmates"
           desc="Simple app to display Amikom University Yogyakarta classmates and alums photos."
         />
