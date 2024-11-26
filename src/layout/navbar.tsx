@@ -34,14 +34,13 @@ export default function Navbar() {
               </button>
             </div>
 
-            <div className="flex basis-full sm:basis-2/4 items-center gap-2">
+            <div className="flex basis-full sm:basis-2/4 justify-end items-center gap-2">
               <FormDialog>
                 <Button
                   variant="outline"
-                  size="lg"
-                  className="flex flex-row justify-between items-center font-normal w-full rounded-full px-4"
+                  className="flex flex-row justify-between items-center font-normal w-full max-w-[276px] rounded-full px-2"
                 >
-                  <p className="text-muted-foreground">looking for photos?</p>
+                  <p className="text-muted-foreground ml-2">looking for photos?</p>
                   <kbd className="hidden sm:inline-flex pointer-events-none h-6 select-none items-center gap-1 rounded-full border bg-muted px-2 font-mono text-[12px] font-medium text-muted-foreground opacity-100">
                     <span className="text-sm">⌘</span>k
                   </kbd>
