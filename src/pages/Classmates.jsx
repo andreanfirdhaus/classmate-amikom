@@ -22,7 +22,7 @@ export default function Classmates() {
   return (
     <Fragment>
       <MetaData
-        title="Classmate"
+        title="Classmate Amikom"
         description="A simple application to display a list of classmates and alumni of Amikom University Yogyakarta based on photos."
         name="Classmate Amikom"
         domain="https://classmate-amikom.vercel.app/"
