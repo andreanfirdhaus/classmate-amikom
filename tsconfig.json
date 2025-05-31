@@ -12,6 +12,11 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "module": "ESNext",
+    "target": "ESNext",
+    "types": [
+      "vite/client"
+    ]
     // ...
   },
   "include": [
