@@ -15,12 +15,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '@/context/data-context';
+import { Turnstile } from '@marsidev/react-turnstile'
+import type { TurnstileInstance } from '@marsidev/react-turnstile'
+import { useTheme } from './theme-provider';
 
 const formSchema = z.object({
     tahunAngkatan: z.string({
@@ -41,6 +46,19 @@ type formSchemaValues = z.infer<typeof formSchema>
 
 export default function DialogForm({ onSubmitClose }: { onSubmitClose: () => void }) {
     const { setData } = useContext(DataContext);
+    const { theme } = useTheme()
+    const ref = React.useRef<TurnstileInstance | null>(null)
+    const siteKey = import.meta.env.VITE_SITE_KEY_TURNSTILE;
+
+    const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+    const [isCaptchaSuccess, setIsCaptchaSuccess] = useState(false);
+    const [showTurnstile, setShowTurnstile] = useState(false)
+    const [hideCheckbox, setHideCheckbox] = useState(false)
+
+    const turnstileTheme = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ? 'dark'
+        : 'light'
+
     const form = useForm<formSchemaValues>({
         resolver: zodResolver(formSchema),
     });
@@ -49,6 +67,17 @@ export default function DialogForm({ onSubmitClose }: { onSubmitClose: () => voi
         setData(data);
         onSubmitClose();
     }
+
+    useEffect(() => {
+        let timeout: number;
+        if (isCheckboxChecked) {
+            timeout = window.setTimeout(() => {
+                setShowTurnstile(true)
+                setHideCheckbox(true)
+            }, 500)
+        }
+        return () => clearTimeout(timeout)
+    }, [isCheckboxChecked])
 
     return (
         <Form {...form}>
@@ -139,8 +168,59 @@ export default function DialogForm({ onSubmitClose }: { onSubmitClose: () => voi
                         </FormItem>
                     )}
                 />
-                {/* button submit */}
-                <Button type="submit" size='lg' variant='default' className="w-full rounded-full">
+
+                {/* checkbox is visible by default, but it will be hidden */}
+                <div className={hideCheckbox ? 'hidden' : ''}>
+                    <Label
+                        htmlFor="verify"
+                        className="hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 has-[[aria-checked=true]]:border-blue-600 has-[[aria-checked=true]]:bg-blue-50 dark:has-[[aria-checked=true]]:border-blue-900 dark:has-[[aria-checked=true]]:bg-blue-950 transition-all duration-300"
+                    >
+                        <Checkbox
+                            id="verify"
+                            checked={isCheckboxChecked}
+                            onCheckedChange={(checked: boolean) => setIsCheckboxChecked(checked)}
+                            className="data-[state=checked]:border-blue-600 data-[state=checked]:bg-blue-600 data-[state=checked]:text-white dark:data-[state=checked]:border-blue-700 dark:data-[state=checked]:bg-blue-700 transition duration-300"
+                        />
+                        <div className="grid gap-1.5 font-normal">
+                            <p className="text-sm leading-none font-medium">Let’s make sure it’s really you.</p>
+                            <p className="text-muted-foreground text-sm">Quick verification needed to proceed.</p>
+                        </div>
+                    </Label>
+                </div>
+
+                {/* render Turnstile component after delay */}
+                {showTurnstile && (
+                    <Turnstile
+                        ref={ref}
+                        siteKey={siteKey}
+                        options={{
+                            action: 'submit-form',
+                            theme: turnstileTheme,
+                            size: 'flexible',
+                            language: 'en',
+                            refreshExpired: 'manual',
+                        }}
+                        onSuccess={(token) => setIsCaptchaSuccess(true)}
+                        onExpire={() => {
+                            ref.current?.reset()
+                            setIsCaptchaSuccess(false)
+                        }}
+                        scriptOptions={{
+                            async: true,
+                            defer: true,
+                            appendTo: 'head',
+                        }}
+                    />
+                )}
+
+                {/* submit button is only active if Turnstile component is rendered. */}
+                <Button
+                    type="submit"
+                    size="lg"
+                    variant="default"
+                    className="w-full rounded-full"
+                    disabled={!isCaptchaSuccess}
+                >
                     Check
                 </Button>
             </form>
