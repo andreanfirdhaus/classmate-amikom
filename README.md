@@ -1,3 +1,0 @@
-## Classmates Amikom Yogyakarta
-
-
